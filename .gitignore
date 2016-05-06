@@ -10,7 +10,6 @@ core/
 example.gitignore
 index.php
 modules/
-profiles/
 robots.txt
 sites/
 themes/
@@ -18,3 +17,4 @@ update.php
 vendor/
 web.config
 composer.lock
+.idea
