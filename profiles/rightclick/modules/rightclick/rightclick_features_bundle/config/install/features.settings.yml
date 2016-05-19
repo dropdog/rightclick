@@ -1,0 +1,7 @@
+export:
+  folder: rightclick
+langcode: en
+profile:
+  machine_name: drupal
+  name: Drupal
+  description: ''

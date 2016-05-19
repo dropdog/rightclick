@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.rightclick_highlightedblock
+    - field.storage.block_content.field_high_constrained
+id: block_content.rightclick_highlightedblock.field_high_constrained
+field_name: field_high_constrained
+entity_type: block_content
+bundle: rightclick_highlightedblock
+label: Constrained
+description: "Make the image full width or not.\r\n"
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Constrained
+  off_label: Unconstrained
+field_type: boolean

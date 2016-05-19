@@ -1,0 +1,57 @@
+/**
+ * Custom style for checkboxes & radio
+ */
+.option {
+  padding: $default-atom-space/2 0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  display: none;
+}
+
+/* to hide the checkbox itself */
+input[type=checkbox] + label:before,
+input[type=radio] + label:before {
+  font-family: Linearicons;
+  display: inline-block;
+  @include adjust-font-size-to (-1);
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  content: "\e98d";
+  letter-spacing: $default-atom-space;
+}
+
+input[type=radio] + label:before {
+  content: "\e99d";
+}
+
+/*input[type=checkbox] + label:hover,*/
+input[type=checkbox] + label:hover:before,
+input[type=radio] + label:hover:before {
+  color: $third-color;
+}
+
+/* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before,
+input[type=radio]:checked + label:before {
+  content: "\e98e";
+  letter-spacing: $default-atom-space;
+  color: $base-color;
+}
+
+input[type=radio]:checked + label:before {
+  content: "\e99e";
+}
+
+/*input[type=checkbox]:checked + label:hover,*/
+input[type=checkbox]:checked + label:hover:before,
+input[type=radio]:checked + label:hover:before {
+  color: $base-color;
+}
+
+/* allow space for check mark */

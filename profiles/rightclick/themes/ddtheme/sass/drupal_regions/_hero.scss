@@ -1,0 +1,9 @@
+/**
+ * Region Hero.
+ */
+
+.hero {
+    //@include debug-hero;
+    clear: both;
+    @include clearfix;
+}

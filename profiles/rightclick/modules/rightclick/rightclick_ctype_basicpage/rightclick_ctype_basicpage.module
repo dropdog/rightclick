@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * Contains rightclick_ctype_basicpage.module
+ */
+
+/**
+ * Implements hook_install().
+ */
+function rightclick_ctype_basicpage_install() {
+  // Create temporary array to setup permissions per role
+  $roles_with_permissions = array(
+    'developer' => array(),
+    'moderator' => array(
+      'translate basicpage node',
+      'create basicpage content on assigned domains',
+      'delete basicpage content on assigned domains',
+      'update basicpage content on assigned domains',
+      'create basicpage content',
+      'delete any basicpage content',
+      'delete own basicpage content',
+      'delete basicpage revisions',
+      'edit any basicpage content',
+      'edit own basicpage content',
+      'revert basicpage revisions',
+      'view basicpage revisions',
+    ),
+    'publisher_general' => array(),
+    'publisher_hr' => array(),
+    'publisher_pm' => array(),
+    'publisher_marketing' => array(
+      'translate basicpage node',
+      'create basicpage content on assigned domains',
+      'update basicpage content on assigned domains',
+      'create basicpage content',
+      'delete own basicpage content',
+      'edit any basicpage content',
+      'edit own basicpage content',
+      'revert basicpage revisions',
+      'view basicpage revisions',
+    ),
+  );
+
+  // Add permissions to roles
+  // See https://api.drupal.org/api/drupal/core%21modules%21user%21user.module/function/user_role_grant_permissions/8
+  foreach ($roles_with_permissions as $roleid => $permissions) {
+    user_role_grant_permissions($roleid, $permissions);
+  }
+}
+

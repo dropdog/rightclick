@@ -1,0 +1,371 @@
+/**
+ * Helper Classes.
+ */
+
+.show {
+  display: block !important;
+}
+
+/**
+  * Classes used for fonts.
+  */
+.font-lighter {
+  font-weight: lighter;
+}
+
+.font-normal {
+  font-weight: normal;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+/**
+  * Class used in bylines.
+  */
+.byline {
+  @include adjust-font-size-to(0);
+  font-style: italic;
+}
+
+/**
+  * Classes used in addresses.
+  */
+.vcard {
+  @include clearfix;
+  p {
+    margin: 0;
+  }
+}
+
+.org {}
+
+.adr {}
+
+.street-address {}
+
+.locality {}
+
+.postal-code {}
+
+/**
+  * Classes used in layout.
+  */
+.constrained {
+  @include container(1200px);
+}
+
+ .primary-info {
+  @include breakpoint($desk) {
+    @include grid-span(6, 1);
+  }
+}
+
+.secondary-info {
+  @include breakpoint($desk) {
+    @include grid-span(6, 7);
+  }
+}
+
+/**
+  * Class for leading paragraphs.
+  */
+.leading {
+  @include adjust-font-size-to(2);
+  color: $base-color;
+}
+
+/**
+  *Classes for our modular scale in the Styleguide.
+  */
+.ms10 {
+  @include adjust-font-size-to(10);
+}
+
+.ms9 {
+  @include adjust-font-size-to(9);
+}
+
+.ms8 {
+  @include adjust-font-size-to(8);
+}
+
+.ms7 {
+  @include adjust-font-size-to(7);
+}
+
+.ms6 {
+  @include adjust-font-size-to(6);
+}
+
+.ms5 {
+  @include adjust-font-size-to(5);
+}
+
+.ms4 {
+  @include adjust-font-size-to(4);
+}
+
+.ms3 {
+  @include adjust-font-size-to(3);
+}
+
+.ms2 {
+  @include adjust-font-size-to(2);
+}
+
+.ms1 {
+  @include adjust-font-size-to(1);
+}
+
+.ms0 {
+  @include adjust-font-size-to(0);
+}
+
+.ms-1 {
+  @include adjust-font-size-to(-1);
+}
+
+.ms-2 {
+  @include adjust-font-size-to(-2);
+}
+
+.ms-3 {
+  @include adjust-font-size-to(-3);
+}
+
+.ms-4 {
+  @include adjust-font-size-to(-4);
+}
+
+.ms-5 {
+  @include adjust-font-size-to(-5);
+}
+
+.is-active {
+  text-decoration: underline;
+}
+
+/**
+  * Color classes.
+  */
+.base-color {
+  color: $base-color;
+}
+
+.second-color {
+  color: $second-color;
+}
+
+.third-color {
+  color: $third-color;
+}
+
+/**
+  * Light color classes.
+  */
+.base-color-light {
+  color: $base-color-light;
+}
+
+.second-color-light{
+  color: $second-color-light;
+}
+
+.third-color-light {
+  color: $third-color-light;
+}
+
+/**
+  * Background Color classes.
+  */
+.bg-base-color {
+  background-color: $base-color;
+}
+
+.bg-second-color {
+  background-color: $second-color;
+}
+
+.bg-third-color {
+  background-color: $third-color;
+}
+
+/**
+  * Background light color classes.
+  */
+.bg-base-color-light {
+  background-color: $base-color-light;
+}
+
+.bg-second-color-light{
+  background-color: $second-color-light;
+}
+
+.bg-third-color-light {
+  background-color: $third-color-light;
+}
+
+/**
+  * Secondary color classes.
+  */
+.info-color {
+  color: $info-color;
+}
+
+.success-color {
+  color: $success-color;
+}
+
+.warning-color {
+  color: $warning-color;
+}
+
+.danger-color {
+  color: $danger-color;
+}
+
+/**
+  * Light secondary color classes.
+  */
+.info-color-light {
+  color: $info-color-light;
+}
+
+.success-color-light {
+  color: $success-color-light;
+}
+
+.warning-color-light {
+  color: $warning-color-light;
+}
+
+.danger-color-light {
+  color: $danger-color-light;
+}
+
+/**
+  * Secondary background color classes.
+  */
+.bg-info-color {
+  background-color: $info-color;
+}
+
+.bg-success-color {
+  background-color: $success-color;
+}
+
+.bg-warning-color {
+  background-color: $warning-color;
+}
+
+.bg-danger-color {
+  background-color: $danger-color;
+}
+
+/**
+  * Secondary light background color classes.
+  */
+.bg-info-color-light {
+  background-color: $info-color-light;
+}
+
+.bg-success-color-light {
+  background-color: $success-color-light;
+}
+
+.bg-warning-color-light {
+  background-color: $warning-color-light;
+}
+
+.bg-danger-color-light {
+  background-color: $danger-color-light;
+}
+
+
+/**
+  * Background grayscale classes.
+  */
+.bg-gray-color {
+  background-color: $gray-color;
+}
+
+.bg-gray-color-light {
+  background-color: $gray-color-light;
+}
+
+.bg-gray-color-lighter {
+  background-color: $gray-color-lighter;
+}
+
+.bg-gray-color-dark {
+  background-color: $gray-color-dark;
+}
+
+.bg-gray-color-darker {
+  background-color: $gray-color-darker;
+}
+
+/**
+  * Text colors (classes for special cases).
+  */
+.text-white {
+  color: $white;
+}
+
+.text-muted {
+  opacity: 0.5;
+}
+
+
+/**
+  * Text grayscale classes.
+  */
+.text-gray {
+  color: $gray-color;
+}
+
+.text-gray-light {
+  color: $gray-color-light;
+}
+
+.text-gray-lighter {
+  color: $gray-color-lighter;
+}
+
+.text-gray-dark {
+  color: $gray-color-dark;
+}
+
+.text-gray-darker {
+  color: $gray-color-darker;
+}
+
+.reset-list-style {
+  @include reset-list-style;
+}
+
+/**
+  * Selected text.
+  */
+::selection {
+  background: $base-color; /* WebKit/Blink Browsers */
+  color: $white;
+}
+::-moz-selection {
+  background: $base-color; /* Gecko Browsers */
+  color: $white;
+}
+
+/**
+  * Classes for the details tag..
+  */
+.details-wrapper {
+  background-color: lighten($base-color, 66%);
+  padding: $default-atom-space;
+  color: $base-color;
+}
+
+
+

@@ -1,0 +1,85 @@
+/**
+ * Custom Tabs (see: http://www.sevensignature.com/blog/code/responsive-pure-css-tabs/).
+ */
+
+.tab_container {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 2px;
+  position: relative;
+}
+
+.tab_container input, .tab_container section {
+  clear: both;
+  padding-top: 10px;
+  display: none;
+}
+
+.tab_container label {
+  display: block;
+  float: left;
+  width: 20%;
+  padding: $default-atom-space;
+  color: #757575;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  background: $gray-color-lighter;
+  border: 1px solid $gray-color-lighter;
+  font-weight: bold;
+  line-height: 16px;
+}
+
+.tab_container label:hover {
+  box-shadow: inset 0 3px #1aa7df;
+  background: $gray-color-light;
+}
+
+.tab_container #tab1:checked ~ #content1,
+.tab_container #tab2:checked ~ #content2,
+.tab_container #tab3:checked ~ #content3,
+.tab_container #tab4:checked ~ #content4,
+.tab_container #tab5:checked ~ #content5 {
+  display: block;
+  padding: 20px;
+  background: #fff;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tab_container [id^="tab"]:checked + label {
+  background: #fff;
+  box-shadow: inset 0 3px #0061a0;
+  border: 1px solid $white;
+}
+
+.tab_container [id^="tab"]:checked + label .fa {
+  color: #0CE;
+}
+
+// Media query
+@media only screen and (max-width: 930px) {
+  label span {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  label span {}
+
+  .tab_container {
+    width: 98%;
+  }
+}
+
+// Content Animation
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,20 @@
+/**
+ * Site Branding.
+ */
+
+.site-branding {
+  a{
+    display: block;
+    line-height: 0;
+    text-align: left;
+  }
+  img{
+    margin: 0;
+    width: 100%;
+    max-height: 36px;
+  }
+  .site-branding__text {
+    position: absolute;
+    top: -10000000px;
+  }
+}

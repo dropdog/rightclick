@@ -1,0 +1,51 @@
+/**
+ * Top bar Search Form
+ */
+
+.search-block-form {
+  div.contextual {
+    display: none;
+  }
+
+  form {
+    @include pie-clearfix;
+    position: relative;
+  }
+
+  .form-item {
+    float: left;
+    width: 100%;
+    padding-right: $default-atom-space*4;
+    input[type=search] {
+      width: 100%;
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid $base-color;
+      background-color: $gray-color-lighter;
+      color: $base-color;
+      &:focus{
+        border: none;
+        border-bottom: 1px solid $third-color;
+        background-color: $white;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+
+  .form-actions {
+    position: absolute;
+    right: 0;
+    width: $default-atom-space*4;
+    input {
+      display: block;
+      width: $default-atom-space*4;
+      height: $default-atom-space*4;
+      padding: $default-atom-space;
+      &:hover{
+        background-color: $gray-color-light;
+      }
+    }
+  }
+
+}

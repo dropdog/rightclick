@@ -1,0 +1,56 @@
+/**
+ * Domain Switcher.
+ */
+.js .domain-switcher {
+  div.contextual {
+    display: none;
+  }
+  .dropbutton-widget {
+    position: absolute;
+    width: 100%;
+    border: none;
+  }
+}
+
+.domain-switcher {
+  position: relative;
+  z-index: 1000;
+  /**
+   * The ul surrounding everything.
+   */
+  .dropbutton {
+    /**
+     * The first li. The one we see by default.
+     */
+    .dropbutton-action {
+      a {
+        background-color: $gray-color-lighter;
+        color: $base-color;
+      }
+    }
+    .secondary-action {
+      a {
+        background-color: $gray-color-light;
+      }
+    }
+    /**
+     * The li that contains the the arrow button,
+     * that is, the right "column" of the dropbutton.
+     */
+    .dropbutton-toggle {
+      button {
+        background-color: $gray-color-lighter;
+        color: $base-color;
+        &:hover {
+          color: $third-color;
+          background-color: $gray-color-light;
+        }
+      }
+    }
+  }
+  .open .dropbutton-toggle {
+    button {
+      background-color: $gray-color-light;
+    }
+  }
+}

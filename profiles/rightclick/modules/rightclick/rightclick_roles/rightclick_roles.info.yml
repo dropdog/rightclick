@@ -1,0 +1,8 @@
+name: 'RightClick Roles'
+description: 'Default User Roles. Usually required for other modules.'
+type: module
+core: 8.x
+dependencies:
+  - user
+version: 8.x-1.1
+package: Rightclick

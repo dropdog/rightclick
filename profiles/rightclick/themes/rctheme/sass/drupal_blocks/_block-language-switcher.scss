@@ -1,0 +1,73 @@
+/**
+ * Language Switcher.
+ */
+
+.js .language-switcher-language-url {
+  div.contextual {
+    display: none;
+  }
+  .dropbutton-widget {
+    position: absolute;
+    width: 100%;
+    border: none;
+  }
+}
+
+.language-switcher-language-url {
+  position: relative;
+  z-index: 1000;
+  /**
+   * The ul surrounding everything.
+   */
+  .dropbutton {
+    /**
+     * The first li. The one we see by default.
+     */
+
+    li {
+      float: none;
+      &.is-active {
+        text-decoration: none;
+      }
+    }
+    .dropbutton-action {
+      a {
+        @include adjust-font-size-to(0);
+        line-height: $base-line-height;
+        background-color: $gray-color-lighter;
+        color: $base-color;
+      }
+    }
+    .secondary-action {
+      a {
+        background-color: $gray-color-light;
+      }
+    }
+    /**
+     * The li that contains the the arrow button,
+     * that is, the right "column" of the dropbutton.
+     */
+    .dropbutton-toggle {
+      button {
+        background-color: $gray-color-lighter;
+        color: $base-color;
+        &:hover{
+          color: $third-color;
+          background-color: $gray-color-light;
+        }
+      }
+    }
+  }
+  .open .dropbutton-toggle {
+    button {
+      background-color: $gray-color-light;
+    }
+  }
+}
+
+.language-switcher-language-url {
+  overflow: visible;
+  div.contextual {
+    display: none;
+  }
+}

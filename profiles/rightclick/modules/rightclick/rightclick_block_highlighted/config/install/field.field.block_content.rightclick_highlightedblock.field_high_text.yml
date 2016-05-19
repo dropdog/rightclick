@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.rightclick_highlightedblock
+    - field.storage.block_content.field_high_text
+  module:
+    - text
+id: block_content.rightclick_highlightedblock.field_high_text
+field_name: field_high_text
+entity_type: block_content
+bundle: rightclick_highlightedblock
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

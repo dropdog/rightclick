@@ -1,0 +1,200 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the rctheme theme.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ * Adds body classes if certain regions have content.
+ */
+function rctheme_preprocess_html(array &$variables) {
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && (!empty($variables['page']['sidebar_secondtop']) OR !empty($variables['page']['sidebar_secondbottom']))) {
+    $variables['attributes']['class'][] = 'layout-two-sidebars';
+  } elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-with-sidebar-first';
+  } elseif (!empty($variables['page']['sidebar_secondtop']) OR !empty($variables['page']['sidebar_secondbottom'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-with-sidebar-second';
+  } else {
+    $variables['attributes']['class'][] = 'layout-no-sidebars';
+  }
+
+  if (!empty($variables['page']['featured_top'])) {
+    $variables['attributes']['class'][] = 'has-featured-top';
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function rctheme_page_attachments_alter(array &$page) {
+  // Tell IE to use latest rendering engine (not to use compatibility mode).
+  /*$ie_edge = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+    'http-equiv' => 'X-UA-Compatible',
+    'content' => 'IE=edge',
+    ],
+  ];
+  $page['#attached']['html_head'][] = [$ie_edge, 'ie_edge'];*/
+}
+
+/**
+ * Implements hook_preprocess_page() for page.html.twig.
+ */
+function rctheme_preprocess_page(array &$variables) {
+
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function rctheme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_theme_suggestions_node_alter().
+ */
+function rctheme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  /*$node = $variables['elements']['#node'];
+
+  if ($variables['elements']['#view_mode'] == "full") {
+
+  }*/
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for Block document templates.
+ */
+function rctheme_preprocess_block(array &$variables) {
+  if (isset($variables['elements']['content']['body']['#bundle'])) {
+    $block_bundle = $variables['elements']['content']['body']['#bundle'];
+  }
+  if (isset($block_bundle) && $block_bundle == 'demo_block') {
+    $variables['attributes']['class'][] = 'demo-block';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_block_alter().
+ */
+function rctheme_theme_suggestions_block_alter(&$suggestions, $variables) {
+  // See: https://www.drupal.org/node/2460893
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+
+  if (isset($variables['elements']['#base_plugin_id'])
+      && $variables['elements']['#base_plugin_id'] == 'system_menu_block'
+  ) {
+    if ($variables['elements']['#id'] == 'company'
+        or $variables['elements']['#id'] == 'products'
+        or $variables['elements']['#id'] == 'projects'
+        or $variables['elements']['#id'] == 'support'
+        or $variables['elements']['#id'] == 'investors'
+        or $variables['elements']['#id'] == 'careers'
+    ) {
+      $suggestions[] = $suggestions[1] . '__sidebar1';
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+function rctheme_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  /*$element = $variables['element'];
+  $suggestions[] = 'field__' . $element['#view_mode'];
+  $suggestions[] = 'field__' . $element['#view_mode'] . '__' . $element['#field_name'];*/
+}
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+function rctheme_theme_suggestions_fieldset_alter(array &$suggestions, array $variables) {
+  /*$element = $variables['element'];
+  if (isset($element['#attributes']['class']) && in_array('form-composite', $element['#attributes']['class'])) {
+    $suggestions[] = 'fieldset__form_composite';
+  }*/
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function rctheme_preprocess_node(array &$variables) {
+  // Default to turning off byline/submitted.
+  //$variables['display_submitted'] = FALSE;
+}
+
+/**
+ * Implements hook_theme_suggestions_views_view_alter().
+ */
+function rctheme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function rctheme_preprocess_form(array &$variables) {
+  //$variables['attributes']['novalidate'] = 'novalidate';
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function rctheme_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  /**
+   * Make the submit button of the search form, an image button.
+   */
+  $form['actions']['submit']['#type'] = 'image_button';
+  $form['actions']['submit']['#src'] = 'profiles/rightclick/themes/rctheme/images/icons/icon-w-search.svg';
+  $form['actions']['submit']['#alt'] = t('Search');
+  /**
+   * Add placeholder text the search input field.
+   */
+  $form['keys']['#attributes']['placeholder'] = t('Search');
+}
+
+/**
+ * Implements hook_preprocess_select().
+ */
+function rctheme_preprocess_select(array &$variables) {
+  //$variables['attributes']['class'][] = 'select-chosen';
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function rctheme_preprocess_field(array &$variables, $hook) {
+  /*switch ($variables['element']['#field_name']) {
+  }*/
+}
+
+/**
+ * Implements hook_preprocess_details().
+ */
+function rctheme_preprocess_details(array &$variables) {
+  /*$variables['attributes']['class'][] = 'details';
+  $variables['summary_attributes']['class'] = 'summary';*/
+}
+
+/**
+ * Implements hook_theme_suggestions_details_alter().
+ */
+function rctheme_theme_suggestions_details_alter(array &$suggestions, array $variables) {
+
+}
+
+/**
+ * Implements hook_preprocess_menu_local_task().
+ */
+function rctheme_preprocess_menu_local_task(array &$variables) {
+  //$variables['element']['#link']['url']->setOption('attributes', ['class'=>'rounded']);
+}

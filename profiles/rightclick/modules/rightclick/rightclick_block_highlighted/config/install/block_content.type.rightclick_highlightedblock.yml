@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rightclick_highlightedblock
+label: 'RightClick Highlighted block'
+revision: 1
+description: 'Block type used in the "Hero" and "Highlighted" regions.'

@@ -1,0 +1,167 @@
+/**
+ * Dropbutton default.
+ */
+.js .dropbutton-wrapper {
+  min-height: $default-atom-space*4.25;
+}
+
+.js td .dropbutton-multiple .dropbutton-widget{
+  width: 100%
+}
+
+.js .dropbutton-multiple .dropbutton-widget {
+  border: 1px solid $base-color;
+  /**
+   * General styles for all dropbuttons.
+   */
+  a,
+  input {
+    padding: ($default-atom-space)/2 $default-atom-space;
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  button {
+    padding: 0;
+    font-weight: normal;
+    border: none;
+  }
+}
+
+/**
+ * The ul surrounding everything.
+ */
+.dropbutton {
+  /**
+   * The first li. The one we see by default.
+   */
+  .dropbutton-action {
+    a {
+      background-color: $base-color;
+      color: $white;
+    }
+  }
+
+  /**
+   * The li that contains the the arrow button,
+   * that is, the right "column" of the dropbutton.
+   */
+  .dropbutton-toggle {
+    button {
+      background-color: $base-color;
+      color: $white;
+    }
+  }
+
+  /**
+   * All the secondary, hidden lis.
+   */
+  .dropbutton-action.secondary-action {
+    a {
+      background-color: $white;
+      color: $base-color;
+      &:hover {
+        background-color: $base-color;
+        color: $white;
+      }
+    }
+  }
+}
+
+/**
+ * Dropbutton primary.
+ */
+.js .dropbutton-multiple.primary .dropbutton-widget {
+  border: 1px solid $base-color;
+  .dropbutton {
+    .dropbutton-action {
+      a {
+        background-color: $white;
+        color: $base-color;
+      }
+    }
+    .dropbutton-toggle {
+      button {
+        background-color: $white;
+        color: $base-color;
+      }
+    }
+    .dropbutton-action.secondary-action {
+      a {
+        background-color: $base-color;
+        color: $white;
+        &:hover {
+          background-color: $white;
+          color: $base-color;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Dropbutton secondary.
+ */
+.js .dropbutton-multiple.secondary .dropbutton-widget {
+  border: 1px solid $third-color;
+  .dropbutton {
+    .dropbutton-action {
+      a {
+        background-color: $third-color;
+        color: $white;
+      }
+    }
+    .dropbutton-toggle {
+      button {
+        background-color: $third-color;
+        color: $white;
+      }
+    }
+    .dropbutton-action.secondary-action {
+      a {
+        background-color: $white;
+        color: $third-color;
+        &:hover {
+          background-color: $third-color;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Dropbutton disabled.
+ */
+.js .dropbutton-multiple.disabled .dropbutton-widget {
+  border: 1px solid $gray-color-lighter;
+
+  /* Disable any click events. */
+  li {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .dropbutton {
+    .dropbutton-action {
+      a {
+        background-color: $gray-color-lighter;
+        color: $white;
+      }
+    }
+    .dropbutton-toggle {
+      button {
+        background-color: $gray-color-lighter;
+        color: $white;
+      }
+    }
+    .dropbutton-action.secondary-action {
+      a {
+        // None needed.
+        &:hover {
+          // None needed.
+        }
+      }
+    }
+  }
+}

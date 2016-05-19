@@ -1,0 +1,97 @@
+/**
+ * Classes used in buttons.
+ */
+
+.btn {
+  background-color: $white;
+  color: $base-color;
+  border-radius: 0;
+  border: 1px solid $base-color;
+  font-weight: bold;
+  padding: $default-atom-space/2 ($default-atom-space*2);
+  margin: 0 $default-atom-space 0 0;
+  display: inline-block;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $base-color;
+    color: $white;
+    border-radius: 0;
+    border-color: $base-color;
+    text-decoration: none;
+  }
+}
+
+.btn.primary {
+  @extend .btn;
+  background-color: $base-color;
+  border: 1px solid $base-color;
+  color: $white;
+  &:hover {
+    background-color: $white;
+    border: 1px solid $base-color;
+    color: $base-color;
+  }
+}
+
+.btn.secondary {
+  @extend .btn;
+  background-color: $third-color;
+  border: 1px solid $third-color;
+  color: $white;
+  &:hover {
+    background-color: $base-color;
+    border-color: $white;
+    color: $white;
+  }
+}
+
+.btn.success {
+  @extend .btn;
+  background-color: $success-color-light;
+  color: $success-color-light;
+  border-color: $success-color-light;
+  &:hover {
+    background-color: $success-color-light;
+    color: $success-color-light;
+    border-color: $success-color-light;
+  }
+}
+
+.btn.warning {
+  @extend .btn;
+  background-color: $warning-color-light;
+  color: $warning-color-light;
+  border-color: $warning-color-light;
+  &:hover {
+    color: $warning-color-light;
+    background-color: $warning-color-light;
+    border-color: $warning-color-light;
+  }
+}
+
+.btn.danger {
+  @extend .btn;
+  background-color: $danger-color-light;
+  color: $danger-color-light;
+  border-color: $danger-color-light;
+  &:hover {
+    color: $danger-color-light;
+    background-color: $danger-color-light;
+    border-color: $danger-color-light;
+  }
+}
+
+.btn.disabled {
+  @extend .btn;
+  background-color: $gray-color-light;
+  border: 1px solid $gray-color-light;
+  color: $white;
+  &:hover {
+    background-color: $gray-color-light;
+    border: 1px solid $gray-color-light;
+    color: $white;
+  }
+}

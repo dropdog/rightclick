@@ -1,0 +1,190 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.basicpage.field_basicpage_body
+    - field.field.node.basicpage.field_basicpage_images
+    - field.field.node.basicpage.field_herobg
+    - field.field.node.basicpage.field_heroconstrained
+    - field.field.node.basicpage.field_heroimg
+    - field.field.node.basicpage.field_heromask
+    - field.field.node.basicpage.field_herotext
+    - field.field.node.basicpage.field_herotitle
+    - image.style.thumbnail
+    - node.type.basicpage
+  module:
+    - field_group
+    - image
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_basic_page:
+      children:
+        - group_basicpage_info
+        - group_banner_hero_zone_
+      parent_name: ''
+      weight: 0
+      label: 'Basic Page'
+      format_type: tabs
+      format_settings:
+        label: 'Basic Page'
+        id: ''
+        classes: ''
+        direction: horizontal
+    group_banner_hero_zone_:
+      children:
+        - field_herotitle
+        - field_heroconstrained
+        - field_herobg
+        - field_heroimg
+        - field_heromask
+        - field_herotext
+      parent_name: group_basic_page
+      weight: 24
+      label: 'Banner (Hero zone)'
+      format_type: tab
+      format_settings:
+        label: 'Banner (Hero zone)'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_basicpage_info:
+      children:
+        - title
+        - field_basicpage_body
+        - field_basicpage_images
+      parent_name: group_basic_page
+      weight: 20
+      label: 'Basic page Information'
+      format_type: tab
+      format_settings:
+        label: 'Basic page Information'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.basicpage.default
+targetEntityType: node
+bundle: basicpage
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+  field_basicpage_body:
+    weight: 22
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+  field_basicpage_images:
+    weight: 23
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_domain_access:
+    type: options_buttons
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+  field_domain_all_affiliates:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 10
+    third_party_settings: {  }
+  field_domain_source:
+    type: options_select
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+  field_herobg:
+    weight: 42
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_heroconstrained:
+    weight: 41
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_heroimg:
+    weight: 43
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_heromask:
+    weight: 44
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_herotext:
+    weight: 45
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+  field_herotitle:
+    weight: 40
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 21
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

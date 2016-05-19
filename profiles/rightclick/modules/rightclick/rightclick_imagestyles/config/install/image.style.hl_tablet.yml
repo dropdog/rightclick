@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hl_tablet
+label: 'Highlighted Tablet'
+effects:
+  b3d7d61b-bfb0-46e8-8431-0320b5731506:
+    uuid: b3d7d61b-bfb0-46e8-8431-0320b5731506
+    id: image_desaturate
+    weight: 1
+    data: {  }
+  cab4b0ed-2a45-4d2b-b288-41701ca74a2d:
+    uuid: cab4b0ed-2a45-4d2b-b288-41701ca74a2d
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 1023
+      height: 300

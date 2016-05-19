@@ -1,0 +1,93 @@
+/**
+ * Region Left sidebar.
+ */
+
+.layout-sidebar-first {
+  a {
+    font-size: 14px;
+  }
+  /**
+   * The following code
+   * is for all the menus in the left sidebar.
+   */
+  nav {
+    .menu {
+    }
+    .menu-item {
+    }
+    .menu a {
+    }
+
+    /* ---------- Toggle ----------- */
+    /* Hide the toggle by default. */
+    .menu-toggle,
+    .menu-toggle-target {
+      display: none;
+    }
+
+    /* Unhide it for the specific menu. */
+    .menu-toggle-target {
+      display: inherit;
+      position: fixed;
+      top: 0;
+    }
+
+    .menu-toggle {
+      float: none;
+      display: block;
+      text-decoration: none;
+      z-index: 1000;
+    }
+
+    .menu-toggle--show:after {
+      content: " \e936";
+      font-family: Linearicons;
+    }
+
+    .menu-toggle--hide:after {
+      content: " \e937";
+      font-family: Linearicons;
+    }
+
+    .menu-toggle-target-show:target ~ .menu-toggle,
+    .menu-toggle--hide {
+      display: none;
+    }
+
+    .menu-toggle-target-show:target ~ .menu-toggle--hide {
+      display: block;
+    }
+
+    .menu-item {
+      height: 0;
+      overflow: hidden;
+    }
+
+    .menu-toggle-target-show:target ~ .menu .menu-item {
+      height: auto;
+      overflow: visible;
+    }
+
+    /**
+     * Media queries for the menu.
+     */
+    @media all and (min-width: 901px) {
+
+      .menu-item {
+        height: auto;
+      }
+
+      .menu a {
+      }
+
+      .featured .menu-item a:active,
+      .featured .menu-item a.is-active {
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+    }
+  }
+
+}

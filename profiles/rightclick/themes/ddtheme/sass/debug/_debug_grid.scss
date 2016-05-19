@@ -1,0 +1,11 @@
+/**
+ * Debug Grid System
+ * BUG: with split and fixed gutters https://github.com/at-import/Singularity/issues/187
+ * PATCH: https://github.com/at-import/Singularity/commit/c2ef7b6bcf7915ac460ab9021c3a743684ad4fe5
+ */
+
+.constrained {
+  // Uncomment the following to show the grid.
+  //@include sgs-change('debug', true);
+  @include background-grid($color: rgba($base-color, 0.2));
+}

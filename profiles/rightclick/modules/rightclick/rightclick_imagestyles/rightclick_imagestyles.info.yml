@@ -1,0 +1,19 @@
+name: 'RightClick Image Styles'
+description: 'Custom image styles for the RightClick profile.'
+type: module
+core: 8.x
+dependencies:
+  - block
+  - field_collection
+  - field_group
+  - file
+  - image
+  - node
+  - options
+  - path
+  - responsive_image
+  - text
+  - user
+  - views
+version: 8.x-1.0
+package: Rightclick

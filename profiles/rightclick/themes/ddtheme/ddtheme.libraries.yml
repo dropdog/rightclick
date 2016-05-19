@@ -1,0 +1,11 @@
+ddtheme:
+  version: VERSION
+  js:
+    # Custom Javascript file for your own JS modifications.
+    # Examples of behaviors in JS file.
+    js/ddtheme.js: {}
+
+  css:
+    theme:
+      # Custom CSS file to be loaded in all media circumstances
+      css/ddtheme.css: {}

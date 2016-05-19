@@ -1,0 +1,30 @@
+/**
+ * Region Hero.
+ */
+
+.hero {
+  .constrained {
+    padding: 0;
+    @include breakpoint(1200px) {
+      padding: 0 $default-atom-space;
+    }
+  }
+  img {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 0;
+  }
+  .mask-blue > div.block{
+    position: relative;
+    &:after {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: block;
+      background-color: rgba($base-color,0.4);
+    }
+  }
+}

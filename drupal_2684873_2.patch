@@ -1,0 +1,13 @@
+diff --git a/core/modules/language/src/ConfigurableLanguageManager.php b/core/modules/language/src/ConfigurableLanguageManager.php
+index 59d6d54..4d9e90c 100644
+--- a/core/modules/language/src/ConfigurableLanguageManager.php
++++ b/core/modules/language/src/ConfigurableLanguageManager.php
+@@ -442,7 +442,7 @@ public function setConfigOverrideLanguage(LanguageInterface $language = NULL) {
+    * {@inheritdoc}
+    */
+   public function getConfigOverrideLanguage() {
+-    return $this->configFactoryOverride->getLanguage();
++    return $this->configFactoryOverride->getLanguage() ?: $this->getCurrentLanguage();
+   }
+ 
+   /**

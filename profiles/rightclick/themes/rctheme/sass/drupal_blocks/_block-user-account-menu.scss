@@ -1,0 +1,56 @@
+/**
+ * User Menu.
+ */
+
+.menu--account {
+  .contextual{
+    display: none;
+  }
+  ul.menu {
+    li {
+      padding: 0;
+    }
+    a {
+      /* for Text links
+      line-height: $default-atom-space*4;
+      */
+      text-indent: -10000px;
+      display: block;
+      position: relative;
+      padding: 0;
+      width: $default-atom-space*4;
+      height: $default-atom-space*4;
+      /*@include adjust-font-size-to(1);*/
+      &:after {
+        text-indent: 0;
+        font-family: Linearicons;
+        content: "\E86B";
+        position: absolute;
+        top: $default-atom-space/2;
+        left: $default-atom-space;
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      &:hover{
+        background-color: $gray-color-light;
+      }
+
+    }
+    .userlogin a:after {
+      content: "\e6d2";
+    }
+    .userlogout a:after {
+      content: "\e6d3";
+    }
+    .userregister a:after {
+      content: "\e71f";
+    }
+    .userpage a:after {
+      content: "\e71e";
+    }
+
+  }
+}
+

@@ -1,0 +1,12 @@
+/**
+ * Region Left sidebar.
+ */
+
+.layout-sidebar-first {
+  /**
+   * Specify grid for resolutions bigger than 48em (Mobile first) --- OVERRIDE
+   */
+  @include breakpoint($desk) {
+    @include grid-span(3, 1);
+  }
+}

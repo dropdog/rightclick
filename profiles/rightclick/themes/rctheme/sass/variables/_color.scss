@@ -1,0 +1,49 @@
+/**
+ * Primary colors variables.
+ */
+$base-color: #0061a0;
+$second-color: #fdb81f;
+$third-color: #1aa7df;
+
+/**
+ * Light primary colors variables.
+ */
+$base-color-light: lighten(#0061a0, 60%);
+$second-color-light: lighten(#fdb81f, 40%);
+$third-color-light: lighten(#1aa7df, 47%);
+
+/**
+ * Secondary colors variables.
+ */
+$info-color: lighten($base-color, 15%);
+$success-color: #77b259;
+$warning-color: $second-color;
+$danger-color:  #e62600;
+
+/**
+ * Light secondary colors variables.
+ */
+$info-color-light: lighten($info-color, 50%);
+$success-color-light: lighten($success-color, 40%);
+$warning-color-light: lighten($warning-color, 40%);
+$danger-color-light: lighten($danger-color, 50%);
+
+/**
+ * Grayscale variables.
+ */
+$gray-color-lighter: #e9e9e9;
+$gray-color-light: #e0e0e0;
+$gray-color: #a8a8a8;
+$gray-color-dark: #7e7e7e;
+$gray-color-darker: #2a2a2a;
+
+/**
+ * White color variable.
+ */
+$white: #fff;
+
+/**
+ * Base font color variable.
+ */
+$font-color: #878787;
+$color-info-text: $base-color;

@@ -1,0 +1,32 @@
+<?php
+/**
+ * Menu fixes
+ */
+
+
+/**
+ * Add custom classes to account (user) menu
+ */
+function rightclick_menus_preprocess_menu(&$variables) {
+  $account = \Drupal::currentUser();
+
+  if ($variables['menu_name'] == 'account') {
+    foreach ($variables['items'] as $key => &$item) {
+      /**
+       * Check if user is logged in and hide register link
+       */
+      if (!$item['url']->isExternal() && $item['url']->toUriString() == 'route:user.register' && $account->id()) {
+        unset($variables['items'][$key]);
+      }
+      elseif (!$item['url']->isExternal()) {
+        /**
+         * Example regex for external links
+         * $class = preg_replace('/menu_link_content:/', '', $key);
+         */
+        $class = preg_replace('/route:|[.,]/', '', $item['url']->toUriString());
+        $item['attributes']->addClass($class);
+      }
+    }
+  }
+}
+

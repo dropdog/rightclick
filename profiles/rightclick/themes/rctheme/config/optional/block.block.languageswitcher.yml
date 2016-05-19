@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - dropdog_languages
+  theme:
+    - rctheme
+id: languageswitcher
+theme: rctheme
+region: top
+weight: -15
+provider: null
+plugin: 'languageswitcher_block:language_interface'
+settings:
+  id: 'languageswitcher_block:language_interface'
+  label: 'Dropdog Language Switcher Block'
+  provider: dropdog_languages
+  label_display: '0'
+visibility: {  }

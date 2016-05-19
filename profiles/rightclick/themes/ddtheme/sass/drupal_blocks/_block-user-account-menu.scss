@@ -1,0 +1,9 @@
+/**
+ * User Menu.
+ */
+
+.menu--account {
+  ul.menu {
+    @include horizontal-list($direction: 'right');
+  }
+}

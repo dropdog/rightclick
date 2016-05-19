@@ -1,0 +1,7 @@
+/**
+ * Language switcher.
+ */
+
+.language-switcher-language-url {
+  @include horizontal-list($direction: right);
+}

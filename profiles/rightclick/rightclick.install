@@ -1,0 +1,40 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the dropdog installation profile.
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function rightclick_install() {
+
+  $config = \Drupal::configFactory();
+
+  // Set front page to "node".
+  $front = $config->getEditable('system.site');
+  $front->set('page.front', '/node');
+  $front->save();
+
+  // Enable the admin theme.
+  $theme = $config->getEditable('node.settings');
+  $theme->set('use_admin_theme', TRUE);
+  $theme->save();
+
+  // Disable importing translations to speed up installation
+  $import_translations = $config->getEditable('locale.settings');
+  $import_translations->set('translation.import_enabled', false);
+  $import_translations->save();
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->addRole('administrator');
+  $user->save();
+
+}

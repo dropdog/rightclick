@@ -1,0 +1,31 @@
+/**
+ * Drupal comments
+ */
+
+.comment {
+  @include clearfix;
+  margin: 0 0 ($default-atom-space*2) 0;
+
+  nav {
+    ul {
+      @include horizontal-list;
+    }
+  }
+
+  @include breakpoint($desk) {
+    .comment__header {
+      @include grid-span(2, 1);
+      padding-left: 0;
+    }
+    .comment__content {
+      @include grid-span(10, 3);
+    }
+  }
+}
+
+/**
+ * Class used in the outer div of nested comments.
+ */
+.indented {
+  margin-left: 2em;
+}

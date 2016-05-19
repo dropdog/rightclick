@@ -1,0 +1,106 @@
+/**
+ * Main Navigation.
+ */
+
+.menu--main {
+  .menu {
+    padding: 0;
+    text-align: left; /* LTR */
+  }
+
+  .menu-item {
+    float: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+  }
+
+  .menu a {
+    float: none;
+    display: block;
+    text-decoration: none;
+  }
+
+  /* ---------- Primary Menu Toggle ----------- */
+  /* Hide the toggle by default. */
+  .menu-toggle,
+  .menu-toggle-target {
+    display: none;
+  }
+
+  /* Unhide it for the primary menu. */
+  .menu-toggle-target {
+    display: inherit;
+    position: fixed;
+    top: 0;
+  }
+
+  .menu-toggle {
+    float: none;
+    display: block;
+    text-decoration: none;
+    z-index: 1000;
+  }
+
+  .menu-toggle:after {
+    content:"";
+    background: url(../images/icons/hamburger.svg) no-repeat;
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    position: absolute;
+    right: 10px; /* LTR */
+  }
+
+  .menu-toggle-target-show:target ~ .menu-toggle,
+  .menu-toggle--hide {
+    display: none;
+  }
+
+  .menu-toggle-target-show:target ~ .menu-toggle--hide {
+    display: block;
+  }
+
+  .menu-item {
+    height: 0;
+    overflow: hidden;
+  }
+
+  .menu-toggle-target-show:target ~ .menu .menu-item {
+    height: auto;
+    overflow: visible;
+  }
+
+  /**
+   * Media queries for primary menu.
+   */
+  @media all and (min-width: 901px) {
+
+    .block-menu .menu {
+    }
+
+    .menu-item {
+      float: left; /* LTR */
+      list-style: none;
+      width: auto;
+      height: auto;
+      overflow: visible;
+    }
+
+    .menu a {
+      float: left; /* LTR */
+      padding: $default-atom-space;
+    }
+
+    .featured .menu-item a:active,
+    .featured .menu-item a.is-active {
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  }
+}

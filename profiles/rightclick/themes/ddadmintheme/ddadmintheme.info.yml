@@ -1,0 +1,37 @@
+name: DropDog Admin Theme
+type: theme
+base theme: seven
+description: 'Dropdog profile administration theme for Drupal 8.'
+alt text: 'Dropdog profile administration theme for Drupal 8.'
+package: Dropdog
+
+libraries:
+  - ddadmintheme/ddadmintheme
+
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+regions_hidden:
+  - sidebar_first
+
+version: '8.0.1'
+core: '8.x'
+project: 'drupal'
+
+required:
+  - block.block.ddadmintheme_breadcrumbs
+  - block.block.ddadmintheme_content
+  - block.block.ddadmintheme_help
+  - block.block.ddadmintheme_local_actions
+  - block.block.ddadmintheme_login
+  - block.block.ddadmintheme_messages
+  - block.block.ddadmintheme_page_title
+  - block.block.ddadmintheme_primary_local_tasks
+  - block.block.ddadmintheme_secondary_local_tasks

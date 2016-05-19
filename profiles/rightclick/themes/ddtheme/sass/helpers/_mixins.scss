@@ -1,0 +1,208 @@
+/* Our custom mixins. */
+/**
+ * Restrict the container.
+ */
+@mixin container($width) {
+  max-width: $width;
+  margin: 0 auto;
+  padding: 0 $default-atom-space;
+  @include clearfix;
+}
+
+/**
+ * Custom mixin for adjusting line height.
+ */
+@mixin adjust-font-size-to($font-size) {
+  font-size:ms($font-size);
+  line-height: map-get($line-height-map, $font-size);
+}
+
+/**
+ * List with right paddings and margins and no list style.
+ */
+@mixin list-no-style {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+/**
+ * Color mixins.
+ */
+@mixin base-color {
+  background-color: $base-color;
+}
+
+@mixin secondary-color {
+  background-color: $second-color;
+}
+
+@mixin color-info {
+  background-color: $info-color-light;
+}
+
+@mixin color-success {
+  background-color: $success-color-light;
+}
+
+@mixin color-warning {
+  background-color: $warning-color-light;
+}
+
+@mixin color-danger {
+  background-color: $danger-color-light;
+}
+
+@mixin bg-info {
+  background-color: $info-color-light;
+}
+
+@mixin bg-success {
+  background-color: $success-color-light;
+}
+
+@mixin bg-warning {
+  background-color: $warning-color-light;
+}
+
+@mixin bg-danger {
+  background-color: $danger-color-light;
+}
+
+/**
+ * Use the following mixins for debugging.
+ */
+.demo-block {
+  border: 1px solid #666;
+  min-height: 3em;
+}
+
+@mixin debug-header {
+  position: relative;
+  background: rgba($base-color, 0.10);
+  min-height: 10em;
+  &:before {
+    content: "Header";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-highlighted {
+  position: relative;
+  background: rgba($base-color, 0.30);
+  min-height: 10em;
+  &:before {
+    content: 'Highlighted';
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-main {
+  position: relative;
+  background: rgba($base-color, 0.25);
+  min-height: 10em;
+  &:before {
+    /* content: "Main Region"; */
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-sidebar1 {
+  position: relative;
+  background: rgba($base-color, 0.15);
+  min-height: 10em;
+  &:before {
+    content: "Sidebar 1";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    padding: 0;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-sidebartop {
+  position: relative;
+  background: rgba($base-color, 0.20);
+  // min-height: 10em;
+  padding-bottom: $default-atom-space;
+  &:before {
+    content: "Sidebar 2 Top";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-sidebarbottom {
+  position: relative;
+  background: rgba($base-color, 0.15);
+  min-height: 10em;
+  &:before {
+    content: "Sidebar 2 Bottom";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-bottom {
+  background: rgba($base-color, 0.15);
+  position: relative;
+  min-height: 10em;
+  color: #FFF;
+  &:before {
+    content: "Bottom Region";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin debug-footer {
+  position: relative;
+  background: rgba($base-color, 0.10);
+  min-height: 10em;
+  &:before {
+    content: "Footer";
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.1;
+    font-size: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

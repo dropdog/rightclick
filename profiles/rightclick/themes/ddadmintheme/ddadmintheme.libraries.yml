@@ -1,0 +1,8 @@
+ddadmintheme:
+  version: VERSION
+  css:
+    theme:
+      # Custom CSS file to be loaded in all media circumstances
+      css/ddadmintheme.css: {}
+  js:
+    js/ddadmintheme.js: {}

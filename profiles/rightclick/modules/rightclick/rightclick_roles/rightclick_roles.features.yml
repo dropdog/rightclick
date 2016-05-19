@@ -1,0 +1,12 @@
+bundle: rightclick
+required:
+  - user.role.anonymous
+  - user.role.authenticated
+  - user.role.partner
+  - user.role.publisher_general
+  - user.role.publisher_hr
+  - user.role.publisher_pm
+  - user.role.publisher_marketing
+  - user.role.moderator
+  - user.role.developer
+  - user.role.administrator

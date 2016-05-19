@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the ddadmintheme theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Changes vertical tabs to container and adds meta information.
+ */
+function ddadmintheme_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\node\NodeInterface $node */
+
+  /**
+   * Array that holds all the fields that we move to the right column
+   * in the 'add' && 'edit' forms.
+   */
+  $fields = array('field_domain_access', 'field_domain_source', 'langcode', 'field_domain_all_affiliates');
+
+  /* Manipulate the node add/edit form .*/
+  foreach ($fields as $field) {
+    if (isset($form[$field])) {
+      /* Add the following class for even formatting. */
+      $form[$field]['#attributes']['class'][] = 'entity-meta__header';
+      /* Move the element to a different place in the array, to print it in the sidebar. */
+      $form['advanced'][$field] = $form[$field];
+      /* Unset the original element in the array, since you moved it. */
+      unset($form[$field]);
+    }
+  }
+  /* Manipulate the node add/edit form (end).*/
+}

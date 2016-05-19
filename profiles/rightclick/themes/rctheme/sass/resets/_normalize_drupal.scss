@@ -1,0 +1,62 @@
+/**
+ * Normalize Drupal.
+ */
+
+/*
+ *Drupal messages
+ */
+.messages__wrapper {
+  padding-left: $default-atom-space;
+}
+
+.messages {
+  background: no-repeat 10px 17px; /* LTR */
+  border: solid;
+  border-width: 1px 1px 1px 0; /* LTR */
+  border-radius: 2px;
+  padding: 15px 20px 15px 35px; /* LTR */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  // The following places the messages icons at vertical center.
+  background-position: 0.5em center;
+}
+
+.messages + .messages {
+  margin-top: $default-atom-space;
+}
+
+.messages-status {
+  color: $success-color;
+  background-color: $success-color-light;
+  border-color: $success-color $success-color $success-color transparent; /* LTR */
+  background-image: url(../images/icons/check.svg);
+  box-shadow: -8px 0 0 $success-color; /* LTR */
+}
+
+.messages-warning {
+  color: $warning-color;
+  background-color: $warning-color-light;
+  border-color: $warning-color $warning-color $warning-color transparent; /* LTR */
+  background-image: url(../images/icons/warning.svg);
+  box-shadow: -8px 0 0 $warning-color; /* LTR */
+}
+
+.messages-error {
+  color: $danger-color;
+  background-color: $danger-color-light;
+  border-color: $danger-color $danger-color $danger-color transparent; /* LTR */
+  background-image: url(../images/icons/error.svg);
+  box-shadow: -8px 0 0 $danger-color; /* LTR */
+}
+
+/**
+ * Drupal System Tabs
+ */
+ul.tabs.primary {
+  .related-posts {
+    h4 {
+      font-size: $base-font-size;
+      font-weight: bold;
+    }
+  }
+}

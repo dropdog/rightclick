@@ -1,0 +1,62 @@
+name: RC Theme
+type: theme
+description: 'A flexible DropDog subtheme.'
+package: Dropdog
+version: '8.0.1'
+core: 8.x
+base theme: ddtheme
+force_export: false
+
+libraries:
+  - rctheme/rctheme
+
+regions:
+  top: 'Top Bar'
+  header: 'Header'
+  hero: 'Hero'
+  highlighted: 'Highlighted'
+  pre_content: 'Pre content'
+  content: 'Content'
+  sidebar_first: 'Sidebar First'
+  sidebar_secondtop: 'Sidebar Second Top'
+  sidebar_secondbottom: 'Sidebar Second Bottom'
+  bottom_highlighted: 'Bottom Highlighted'
+  bottom: 'Bottom'
+  footer_highlighted: 'Footer Highlighted'
+  footer: 'Footer'
+
+  # Ultimenu Regions
+  ultimenu_main_4901fa5e: 'Ultimenu: The company'
+  ultimenu_main_0fac09d6: 'Ultimenu: Products'
+  ultimenu_main_8c890093: 'Ultimenu: Projects'
+  ultimenu_main_c9382c19: 'Ultimenu: Support'
+  ultimenu_main_7a9a79d7: 'Ultimenu: Investors'
+  ultimenu_main_45f9163e: 'Ultimenu: Careers'
+
+features:
+  logo: true
+  name: true
+  slogan: true
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  main_menu: true
+  secondary_menu: true
+
+required:
+- block.block.rctheme_account_menu
+- block.block.rctheme_branding
+- block.block.rctheme_breadcrumbs
+- block.block.rctheme_content
+- block.block.rctheme_footer
+- block.block.rctheme_help
+- block.block.rctheme_local_actions
+- block.block.rctheme_local_tasks
+- block.block.rctheme_main_menu
+- block.block.rctheme_messages
+- block.block.rctheme_page_title
+
+# Override a CSS file:
+stylesheets-remove:
+  - css/ultimenu.css

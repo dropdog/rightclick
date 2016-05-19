@@ -1,0 +1,35 @@
+/**
+ * Region Footer.
+ */
+
+.footer {
+  background-color: $gray-color-lighter  ;
+  h2 {
+    color: $font-color;
+    font-weight: bold;
+    @include adjust-font-size-to(2);
+  }
+
+  @include breakpoint($desk) {
+    #block-company2 {
+      @include grid-span(2, 1);
+    }
+
+    #block-products-footer {
+      @include grid-span(2, 3);
+    }
+
+    #block-investors2 {
+      @include grid-span(2, 5);
+    }
+
+    #block-careers2 {
+      @include grid-span(2, 7);
+    }
+
+    #block-styleguide {
+      @include grid-span(2, 9);
+    }
+  }
+
+}

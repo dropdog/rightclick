@@ -1,0 +1,25 @@
+/**
+ * Visibility Classes
+ */
+
+.hide-small {
+  visibility: hidden;
+  @include breakpoint($tab) {
+    visibility: visible;
+  }
+}
+
+.hide-med {
+  @include breakpoint($tab) {
+    visibility: hidden;
+  }
+  @include breakpoint($desk) {
+    visibility: visible;
+  }
+}
+
+.hide-large {
+  @include breakpoint($desk) {
+    visibility: hidden;
+  }
+}

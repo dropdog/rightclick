@@ -1,0 +1,196 @@
+/**
+ * Main Navigation.
+ */
+
+#block-mainnavigation-ultimenu {
+  position: static;
+  z-index: 900;
+  width: 100%;
+  > ul#ultimenu-main {
+    float: right;
+    position: static;
+    min-height: $default-atom-space*4;
+    > li {
+      position: static;
+      padding: 0;
+      > a {
+        text-transform: uppercase;
+        @include breakpoint($tab) {
+          font-weight: bold;
+        }
+        &.is-active {
+        }
+      }
+      &:last-child {
+        a {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+  .ultimenu__link {
+  }
+
+  .ultimenu__flyout {
+    width: 100% !important;
+    background-color: #fff;
+    @include border-radius(0);
+    padding: 0;
+    .constrained {
+      @include pie-clearfix;
+    }
+    h2 {
+      color: $base-color;
+      font-style: italic;
+      @include adjust-font-size-to(2);
+      border-bottom: 1px solid $base-color;
+      padding-bottom: $default-atom-space/2;
+      margin-bottom: $default-atom-space/2;
+    }
+  }
+
+  /* TODO: Fix Ultimenu breakpoints and mobile menu limit */
+  @media all and (min-width: $tab) {
+    .ultimenu__flyout {
+      /*    @include transition-property(visibility opacity margin);
+          @include transition-duration(0.2s);
+          @include transition-timing-function(ease);*/
+      -moz-transform: translateY(-32px);
+      -ms-transform: translateY(-32px);
+      -o-transform: translateY(-32px);
+      -webkit-transform: translateY(-32px);
+      transform: translateY(-32px);
+
+      -moz-transition: transform 0.3s ease, visibility 0s linear, opacity 0.3s linear, margin 0.3s ease;
+      -ms-transition: transform 0.3s ease, visibility 0s linear, opacity 0.3s linear, margin 0.3s ease;
+      -o-transition: transform 0.3s ease, visibility 0s linear, opacity 0.3s linear, margin 0.3s ease;
+      -webkit-transition: transform 0.3s ease, visibility 0s linear, opacity .5s linear, margin 0.3s ease;
+      transition: transform 0.3s ease, visibility 0s linear, opacity 0.3s linear, margin 0.3s ease;
+    }
+
+    .ultimenu li.hover > .ultimenu__flyout,
+    .ultimenu li:hover > .ultimenu__flyout {
+      -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+      -o-transition-delay: 0s;
+      -webkit-transition-delay: 0s;
+      display: block;
+      margin-top: 0;
+      opacity: 1;
+      transition-delay: 0s;
+      visibility: visible;
+      @include translateY(0);
+    }
+
+  }
+  /**
+   * Company Ultimenu
+   */
+  #block-quality-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 1);
+    }
+  }
+  #block-responsibility-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 4);
+    }
+  }
+  #block-company-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 7);
+    }
+  }
+  #block-subsidiaries-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 10);
+    }
+  }
+  /**
+   * Products Ultimenu
+   */
+  #block-elevators-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 1);
+    }
+  }
+  #block-cabins-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 4);
+    }
+  }
+  #block-products-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 7);
+    }
+  }
+  #block-modernization-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 10);
+    }
+  }
+
+  /**
+   * Investors Ultimenu
+   */
+  #block-twentyfourseven-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 1);
+    }
+  }
+  #block-supportcrew-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 4);
+    }
+  }
+  #block-supportfiles-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 7);
+    }
+  }
+  #block-support-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 10);
+    }
+  }
+
+  /**
+   * Investors Ultimenu
+   */
+  #block-stock-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 4);
+    }
+  }
+  #block-invest-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 1);
+    }
+  }
+  #block-monetary-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 7);
+    }
+  }
+  #block-investors-ultimenu {
+    @include grid-span(12, 1);
+    @include breakpoint($tab) {
+      @include grid-span(3, 10);
+    }
+  }
+}

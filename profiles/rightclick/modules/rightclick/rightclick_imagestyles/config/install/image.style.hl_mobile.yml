@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hl_mobile
+label: 'Highlighted Mobile'
+effects:
+  f9c7bcfe-c732-41ab-b51f-f0a271e75a17:
+    uuid: f9c7bcfe-c732-41ab-b51f-f0a271e75a17
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 767
+      height: 200

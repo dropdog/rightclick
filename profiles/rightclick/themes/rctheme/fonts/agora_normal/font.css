@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'PF Agora Sans Pro';
+  src: url('PFAgoraSansPro-Reg.eot'); /* IE9 Compat Modes */
+  src: url('PFAgoraSansPro-Reg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('PFAgoraSansPro-Reg.woff') format('woff'), /* Modern Browsers */
+       url('PFAgoraSansPro-Reg.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('PFAgoraSansPro-Reg.svg#bd84302afc188f9ad9c8d957abb7b455') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

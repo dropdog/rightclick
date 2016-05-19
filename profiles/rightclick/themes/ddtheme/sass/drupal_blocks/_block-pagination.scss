@@ -1,0 +1,10 @@
+/**
+ * Pagenation.
+ */
+
+.pager {
+  .pager__items {
+    @include horizontal-list;
+  }
+}
+

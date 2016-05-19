@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heromask
+    - node.type.basicpage
+  module:
+    - options
+id: node.basicpage.field_heromask
+field_name: field_heromask
+entity_type: node
+bundle: basicpage
+label: 'Hero mask'
+description: 'Apply a color mask over the hero image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

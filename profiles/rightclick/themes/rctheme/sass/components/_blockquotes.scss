@@ -1,0 +1,10 @@
+/**
+ * Custom style for blockquotes
+ */
+blockquote:before {
+  content: url("../images/quotes.svg");
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 0 -30px -10px;
+}

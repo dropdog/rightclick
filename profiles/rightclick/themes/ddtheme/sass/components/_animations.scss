@@ -1,0 +1,48 @@
+/**
+ * Animations.
+ */
+
+.demo-animate {
+  background: #ddd;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.animate-fade:hover {
+  opacity: 0;
+}
+
+.animate-fade {
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -ms-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  &:hover {
+    opacity: 0;
+  }
+}
+
+.animate-move {
+  position: relative;
+}
+
+.animate-move .demo-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background: gray;
+  -webkit-transition: all 0.8s ease-in-out;
+  -moz-transition: all 0.8s ease-in-out;
+  -ms-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+}
+
+.animate-move:hover .demo-shape {
+  left: 100%;
+  margin-left: -20px;
+}

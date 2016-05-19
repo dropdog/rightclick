@@ -1,0 +1,81 @@
+/**
+ * Custom style for lists (ol, ul)
+ */
+
+ul {
+  list-style: none;
+}
+
+nav ul,
+nav ol,
+ul.menu,
+ul.dropbutton,
+ul.links {
+  @include reset-list-style-custom;
+}
+
+.main {
+  ol {
+    list-style-type: none;
+    counter-reset: li-counter;
+    padding: 0;
+    margin: 0 0 ($default-atom-space*2) 0;
+    ol {
+      margin: 0 0 0 -0.625em;
+    }
+  }
+
+  ol > li {
+    padding-left: $default-atom-space*3.5;
+  }
+
+  ol > li:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.375em;
+    text-align: right;
+    color: #0061a0;
+    content: counter(li-counter) ". ";
+    counter-increment: li-counter;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 ($default-atom-space*2) 0;
+    ul {
+      margin: 0 0 0 -0.625em;
+    }
+  }
+
+  ul > li {
+    padding-left: $default-atom-space*3.5;
+  }
+
+  ul > li:before {
+    position: absolute;
+    top: 0.3725em;
+    left: 0.625em;
+    width: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    color: #0061a0;
+    content: "";
+    height: 0.5em;
+    border: 1px solid #0061a0;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+}
+
+.main {
+  nav ul,
+  nav ol,
+  .contextual ul,
+  ul.menu,
+  ul.dropbutton,
+  ul.links {
+    @include reset-list-style-custom;
+  }
+}

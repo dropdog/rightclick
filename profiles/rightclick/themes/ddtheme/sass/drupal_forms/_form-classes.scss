@@ -1,0 +1,14 @@
+/**
+ * Form Classes.
+ */
+
+input[type=text].is-valid {
+  border-color: $success-color-light;
+  color: $success-color-light;
+}
+
+input[type=text].is-error {
+  border-color: $danger-color-light;
+  color: $danger-color-light;
+}
+

@@ -1,0 +1,15 @@
+/**
+ * Breakpoint variables.
+ */
+
+/* The following declaration converts pxs to ems. */
+@include breakpoint-set('to ems', true);
+$phone: 480px;
+$phone-p: (min-width 320px) (max-width 768px) (orientation portrait); //(480px)
+$phone-l: (min-width 320px) (max-width 768px) (orientation landscape); //(480px)
+
+$tab: 768px;
+$tab-p: (screen) (min-width 768px) (max-width 1024px) (orientation portrait);
+$tab-l: (screen) (min-width 768px) (max-width 1024px) (orientation landscape);
+
+$desk: 1024px;

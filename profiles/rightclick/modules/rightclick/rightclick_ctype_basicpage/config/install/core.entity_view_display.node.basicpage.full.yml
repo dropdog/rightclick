@@ -1,0 +1,53 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.basicpage.field_basicpage_body
+    - field.field.node.basicpage.field_basicpage_images
+    - field.field.node.basicpage.field_herobg
+    - field.field.node.basicpage.field_heroconstrained
+    - field.field.node.basicpage.field_heroimg
+    - field.field.node.basicpage.field_heromask
+    - field.field.node.basicpage.field_herotext
+    - field.field.node.basicpage.field_herotitle
+    - node.type.basicpage
+  module:
+    - image
+    - text
+    - user
+id: node.basicpage.full
+targetEntityType: node
+bundle: basicpage
+mode: full
+content:
+  field_basicpage_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_basicpage_images:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  workbench_moderation_control:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_domain_access: true
+  field_domain_all_affiliates: true
+  field_domain_source: true
+  field_herobg: true
+  field_heroconstrained: true
+  field_heroimg: true
+  field_heromask: true
+  field_herotext: true
+  field_herotitle: true
+  langcode: true
+  links: true

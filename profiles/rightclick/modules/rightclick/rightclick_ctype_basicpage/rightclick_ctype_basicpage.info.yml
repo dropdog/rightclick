@@ -1,0 +1,21 @@
+name: 'RightClick content type Basic Page'
+description: 'Feature module to create Basic Page content type (fields, display, settings, permissions).'
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - rightclick_imagestyles
+  - field
+  - field_collection
+  - field_group
+  - file
+  - image
+  - language
+  - menu_ui
+  - node
+  - options
+  - path
+  - text
+  - user
+version: 8.x-1.1
+package: Rightclick

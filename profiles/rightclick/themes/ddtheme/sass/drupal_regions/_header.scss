@@ -1,0 +1,31 @@
+/**
+ * Region Header.
+ */
+
+.header {
+  overflow: visible;
+
+  .site-branding {
+    @include breakpoint($desk) {
+      @include grid-span(3, 1);
+    }
+  }
+  .menu--account {
+    @include breakpoint($desk) {
+      @include grid-span(9, 4);
+      margin: 0 $default-atom-space;
+    }
+  }
+  .language-switcher-language-url {
+    @include breakpoint($desk) {
+      @include grid-span(9, 4);
+    }
+  }
+  .menu--main {
+    @include breakpoint($desk) {
+      @include grid-span(12, 1);
+      clear: both;
+    }
+  }
+
+}

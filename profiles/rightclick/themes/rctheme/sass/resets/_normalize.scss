@@ -1,0 +1,21 @@
+/**
+ * normalize.
+ */
+
+mark {
+  background: $second-color;
+}
+
+a {
+  color: $base-color;
+  text-decoration: none;
+  &:hover {
+    color: $third-color;
+    text-decoration: none;
+  }
+  .is-active,
+  .active{
+    color: $third-color;
+    text-decoration: underline;
+  }
+}

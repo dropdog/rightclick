@@ -1,0 +1,11 @@
+name: 'RightClick Text Formats'
+description: 'The current project text formats. Plain_text and HTML (CKeditor).'
+type: module
+core: 8.x
+dependencies:
+  - ckeditor
+  - editor
+  - filter
+  - pathologic
+version: 8.x-1.1
+package: Rightclick

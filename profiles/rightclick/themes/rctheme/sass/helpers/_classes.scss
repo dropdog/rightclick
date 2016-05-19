@@ -1,0 +1,57 @@
+/**
+ * Helper Classes.
+ */
+
+/* Class for secondary font. */
+.font-secondary {
+  font-family: $secondary-font;
+}
+
+/**
+ * Classes for background color.
+ */
+.bg-lgray {
+  background-color: $gray-color-light;
+}
+
+.bg-gray {
+  background-color: $gray-color;
+}
+
+.bg-blue {
+  background-color: $base-color;
+}
+
+.bg-yellow {
+  background-color: $second-color;
+}
+
+/**
+ * Classes for image masks.
+ */
+.mask .views-field-field-heroimg .field-content {
+  position: relative;
+  line-height: 0;
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+  }
+}
+
+
+.mask-blue .views-field-field-heroimg .field-content:after {
+  background-color: $base-color;
+}
+
+.mask-yellow .views-field-field-heroimg .field-content:after {
+  background-color: $second-color;
+}
+
+.mask-black .views-field-field-heroimg .field-content:after {
+  background-color: #000000;
+}

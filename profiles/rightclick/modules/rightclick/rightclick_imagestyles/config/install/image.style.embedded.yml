@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: embedded
+label: 'Embedded (70 x 120)'
+effects:
+  a21fe1ef-619e-4853-9421-1b3ce10a0912:
+    uuid: a21fe1ef-619e-4853-9421-1b3ce10a0912
+    id: image_resize
+    weight: 1
+    data:
+      width: 70
+      height: 120

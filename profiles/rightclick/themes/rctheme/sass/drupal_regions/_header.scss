@@ -1,0 +1,117 @@
+/**
+ * Region Header.
+ */
+
+.header {
+  @include pie-clearfix;
+  overflow: visible;
+  position: relative;
+
+  /**
+   * The regions within the header.
+   */
+  .top-bar {
+    background-color: $gray-color-lighter;
+    padding: $default-atom-space 0;
+
+    .constrained {
+      @include pie-clearfix;
+      overflow: visible;
+      position: relative;
+      .domain-switcher {
+        @include grid-span(6, 1);
+        @include breakpoint($phone) {
+          @include grid-span(6, 1);
+        }
+        @include breakpoint($tab) {
+          @include grid-span(2, 6);
+        }
+      }
+
+      .language-switcher-language-url {
+        @include grid-span(6, 7);
+        @include breakpoint($phone) {
+          @include grid-span(6, 7);
+        }
+        @include breakpoint($tab) {
+          @include grid-span(2, 8);
+        }
+      }
+
+      .search-block-form {
+        /*@include grid-span(12, 1);*/
+        width: 100%;
+        padding-right: $default-atom-space*8;
+        position: relative;
+        clear: left;
+
+        @include breakpoint($phone-l) {
+          padding: 0;
+          @include grid-span(6, 1);
+          clear: both;
+        }
+        @include breakpoint($phone) {
+          padding: 0;
+          @include grid-span(6, 1);
+          clear: both;
+        }
+        @include breakpoint($tab) {
+          padding-right: $default-atom-space*8;
+          @include grid-span(3, 10);
+        }
+      }
+
+      .menu--account {
+        //@include grid-span(3, 10);
+        width: $default-atom-space*8;
+        margin-top: -($default-atom-space*4);
+        position: absolute;
+        right: 0;
+        @include breakpoint($phone-l) {
+          margin-top: 0;
+          position: static;
+        }
+        @include breakpoint($phone) {
+          margin-top: 0;
+          position: static;
+          @include grid-span(2, 11);
+        }
+        @include breakpoint($tab) {
+          position: absolute;
+
+        }
+      }
+    }
+  }
+
+  > .constrained {
+    @include pie-clearfix;
+    overflow: visible;
+
+    .site-branding {
+      @include grid-span(8, 3);
+      padding: $default-atom-space*2 0;
+      @include breakpoint($tab) {
+        @include grid-span(2, 1);
+      }
+    }
+
+    #block-mainnavigation-ultimenu {
+      padding: 0;
+      margin-top: 68px;
+      @include grid-span(12, 1);
+      @include breakpoint($tab) {
+        margin-top: 0;
+        @include grid-span(10, 3);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
