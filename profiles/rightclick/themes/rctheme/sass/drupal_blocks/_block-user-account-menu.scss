@@ -23,7 +23,7 @@
       /*@include adjust-font-size-to(1);*/
       &:after {
         text-indent: 0;
-        font-family: Linearicons;
+        font-family: 'Linearicons-Free';
         content: "\E86B";
         position: absolute;
         top: $default-atom-space/2;
@@ -39,16 +39,16 @@
 
     }
     .userlogin a:after {
-      content: "\e6d2";
+      content: "\e81f";
     }
     .userlogout a:after {
-      content: "\e6d3";
+      content: "\e820";
     }
     .userregister a:after {
-      content: "\e71f";
+      content: "\e82a";
     }
     .userpage a:after {
-      content: "\e71e";
+      content: "\e82a";
     }
 
   }

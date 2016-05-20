@@ -13,7 +13,6 @@ libraries:
 regions:
   top: 'Top Bar'
   header: 'Header'
-  hero: 'Hero'
   highlighted: 'Highlighted'
   pre_content: 'Pre content'
   content: 'Content'
@@ -24,14 +23,6 @@ regions:
   bottom: 'Bottom'
   footer_highlighted: 'Footer Highlighted'
   footer: 'Footer'
-
-  # Ultimenu Regions
-  ultimenu_main_4901fa5e: 'Ultimenu: The company'
-  ultimenu_main_0fac09d6: 'Ultimenu: Products'
-  ultimenu_main_8c890093: 'Ultimenu: Projects'
-  ultimenu_main_c9382c19: 'Ultimenu: Support'
-  ultimenu_main_7a9a79d7: 'Ultimenu: Investors'
-  ultimenu_main_45f9163e: 'Ultimenu: Careers'
 
 features:
   logo: true

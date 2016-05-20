@@ -9,4 +9,10 @@ rctheme:
     theme:
       # Custom CSS file to be loaded in all media circumstances
       css/rctheme.css: {}
+      # https://linearicons.com/
+      'https://cdn.linearicons.com/free/1.0.0/icon-font.min.css': { type: external, minified: true }
+      # http://zurb.com/playground/foundation-icon-fonts-3
+      # 'https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css': { type: external, minified: true }
+      # https://octicons.github.com/
+      # 'https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css': { type: external, minified: true }
   dependencies:

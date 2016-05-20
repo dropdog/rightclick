@@ -67,9 +67,8 @@ dependencies:
   - rightclick_imagestyles
   - rightclick_menus
 
-
   # Dropdog Block Types
-  - rightclick_block_highlighted
+
 
 # Themes
 themes:

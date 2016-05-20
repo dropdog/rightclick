@@ -1,4 +1,4 @@
-name: 'Dropdog View Highlighted'
+name: 'Rightclick View Highlighted'
 description: 'Feature that creates the view that displays the "Hero zone fields" of each content type.'
 type: module
 core: 8.x

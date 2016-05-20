@@ -1,4 +1,4 @@
-name: 'RightClick content type Basic Page'
+name: 'RightClick Content type Basic Page'
 description: 'Feature module to create Basic Page content type (fields, display, settings, permissions).'
 type: module
 core: 8.x

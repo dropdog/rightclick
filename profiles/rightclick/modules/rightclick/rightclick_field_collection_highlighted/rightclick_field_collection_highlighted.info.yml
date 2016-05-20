@@ -1,4 +1,4 @@
-name: 'Dropdog Field Collection Highlighted'
+name: 'Rightclick Field Collection Highlighted'
 description: 'Feature module to export a collection field the "Highlighted" banner.'
 type: module
 core: 8.x
