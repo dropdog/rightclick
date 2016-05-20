@@ -32,7 +32,7 @@ var sass_config = {
 
 gulp.task("browser-sync", function() {
     browserSync.init({
-        proxy: "localhost/fordev"
+        proxy: "localhost/rightclick"
     });
     gulp.watch("sass/**/*.scss", ["sass"]);
     gulp.watch("css/*.css").on("change", browserSync.reload);
