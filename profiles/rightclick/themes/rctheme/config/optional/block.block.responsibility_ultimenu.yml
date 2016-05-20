@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dropdog_defaultblock:7677df8b-b411-42d8-a2e4-7c10dd242079'
+  module:
+    - block_content
+  theme:
+    - rctheme
+id: responsibility_ultimenu
+theme: rctheme
+region: ultimenu_main_4901fa5e
+weight: -18
+provider: null
+plugin: 'block_content:7677df8b-b411-42d8-a2e4-7c10dd242079'
+settings:
+  id: 'block_content:7677df8b-b411-42d8-a2e4-7c10dd242079'
+  label: Responsibility
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

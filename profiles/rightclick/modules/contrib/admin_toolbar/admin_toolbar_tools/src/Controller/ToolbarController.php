@@ -12,6 +12,10 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\CronInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Menu\ContextualLinkManager;
+use Drupal\Core\Menu\LocalActionManager;
+use Drupal\Core\Menu\LocalTaskManager;
+use Drupal\Core\Menu\MenuLinkManager;
 
 /**
  * Class ToolbarController
@@ -24,21 +28,41 @@ class ToolbarController extends ControllerBase {
    * @var \Drupal\Core\CronInterface
    */
   protected $cron;
+
+  protected $menuLinkManager;
+  protected $contextualLinkManager;
+  protected $localTaskLinkManager;
+  protected $localActionLinkManager;
+
   /**
    * Constructs a CronController object.
    *
    * @param \Drupal\Core\CronInterface $cron
    *   The cron service.
    */
-  public function __construct(CronInterface $cron) {
+  public function __construct(CronInterface $cron,
+                              MenuLinkManager $menuLinkManager,
+                              ContextualLinkManager $contextualLinkManager,
+                              LocalTaskManager $localTaskLinkManager,
+                              LocalActionManager $localActionLinkManager) {
     $this->cron = $cron;
+    $this->menuLinkManager = $menuLinkManager;
+    $this->contextualLinkManager = $contextualLinkManager;
+    $this->localTaskLinkManager = $localTaskLinkManager;
+    $this->localActionLinkManager = $localActionLinkManager;
   }
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static($container->get('cron'));
+    return new static(
+      $container->get('cron'),
+      $container->get('plugin.manager.menu.link'),
+      $container->get('plugin.manager.menu.contextual_link'),
+      $container->get('plugin.manager.menu.local_task'),
+      $container->get('plugin.manager.menu.local_action')
+    );
   }
   //Reload the previous page.
   public function reload_page() {
@@ -79,6 +103,10 @@ class ToolbarController extends ControllerBase {
 // Clears all cached menu data.
   public function flush_menu() {
     menu_cache_clear_all();
+    $this->menuLinkManager->rebuild();
+    $this->contextualLinkManager->clearCachedDefinitions();
+    $this->localTaskLinkManager->clearCachedDefinitions();
+    $this->localActionLinkManager->clearCachedDefinitions();
     drupal_set_message($this->t('All cached menu data cleared.'));
     return new RedirectResponse($this->reload_page());
   }

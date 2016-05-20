@@ -1,129 +1,49 @@
 <?php
 /**
  * @file
- * Contains dropdog_block_highlighted.module
+ * Contains rightclick_block_highlighted.module
  */
 
-use Drupal\file\Entity\File;
-use Drupal\image\Entity\ImageStyle;
-
-
-/**
+/*
  * Implements hook_preprocess_HOOK().
+ * Alter highlighted block to add classes for constrained and backgound color
  */
 function rightclick_block_highlighted_preprocess_block(&$variables) {
-  /**
+
+  /*
    * Get the Block object if it exists.
    */
   if (!empty($variables['content']['#block_content'])) {
     $block = $variables['content']['#block_content'];
     $blockType = $block->bundle();
 
-    /**
-     * Check if the block type is 'dropdog_highlightedblock'.
+    /*
+     * Check if the block type is 'rightclick_highlightedblock'.
      */
-    if ($blockType == 'dropdog_highlightedblock') {
-      /**
-       * Add a common class to use in the inline styles below.
-       */
-      $variables['attributes']['class'][] = 'block-highlighted';
+    if ($blockType == 'rightclick_highlightedblock') {
 
-      /**
-       * Get/check the value of the 'field_high_constrained' field.
+      /*
+       * Add a common CSS class for highlighted block
+       * same for "block highlighted" and "view block highlighted"
        */
-      $constrained = $block->get('field_high_constrained')
-          ->getValue()[0]['value'];
-      if (isset($constrained) && ($constrained == 1)) {
-        $variables['attributes']['class'][] = 'constrained';
+      $variables['attributes']['class'][] = 'highlighted-block';
+
+      /*
+       * Check the value of the 'field_high_constrained' field and add an extra wrapper for constrained.
+       */
+      if ($block->get('field_high_constrained')->getValue()[0]['value'] == 1) {
+        $variables['content']['#theme_wrappers']['container']['#attributes']['class'] = array(
+          'constrained',
+        );
       }
 
-      /**
-       * Get/check the value of the 'field_high_mask' field.
+      /*
+       * Add a CSS class for background color
        */
-      if (!empty($block->get('field_high_mask')->getValue()[0]['value'])) {
-        $mask = $block->get('field_high_mask')
+      if ($block->get('field_high_bgcolor')->getValue()[0]['value']) {
+        $variables['attributes']['class'][] = 'bg-' . $block->get('field_high_bgcolor')
             ->getValue()[0]['value'];
-        $variables['attributes']['class'][] = 'mask-' . $mask;
       }
-
-      /**
-       * Get the id of the image, load the file entity
-       * and get the path of the image
-       * for every image style applied to the image.
-       */
-      if (isset($variables['content']['field_high_img']['#items'])) {
-        $img_id = $variables['content']['field_high_img']['#items']->getValue('target_id')[0]['target_id'];
-        $file = File::load($img_id);
-        $mobile_uri = ImageStyle::load('hl_mobile')->buildUrl($file->getFileUri());
-        $tablet_uri = ImageStyle::load('hl_tablet')->buildUrl($file->getFileUri());
-        $desktop_uri = ImageStyle::load('hl_desktop')->buildUrl($file->getFileUri());
-
-        /**
-         * Add a wrapper div to the "picture" tag
-         * and use the img id as a class.
-         */
-        $variables['content']['field_high_img']['#theme_wrappers'] = [
-            'container' => [
-                '#attributes' => [
-                    'class' => [
-                        'img-' . $img_id,
-                    ]
-                ]
-            ]
-        ];
-      }
-
-      /**
-       * Add background images with inline css, in the header.
-       */
-      $variables['#attached']['html_head'][] = [
-          [
-              '#type' => 'html_tag',
-            // The HTML tag to add, in this case a  tag.
-              '#tag' => 'style',
-            // The value of the HTML tag.
-              '#value' => '           
-                .block-highlighted img {
-                  visibility: hidden
-                }
-                
-                .block-highlighted picture {
-                  display: block;
-                  line-height: 0;
-                  
-                }
-                
-                @media (max-width: 767px) {
-                  .block-highlighted picture {
-                    background: url(' . $mobile_uri . ');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                  }
-                }
-                
-                @media (min-width: 768px) and (max-width: 1023px) {
-                  .block-highlighted picture {
-                    background: url(' . $tablet_uri . ');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                  }
-                }
-                
-                @media (min-width: 1024px) {
-                  .block-highlighted picture {
-                    background: url(' . $desktop_uri . ');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                  }
-                }         
-              ',
-            // Set attributes like src to load a file.
-//          '#attributes' => array('src' => ''),
-
-          ],
-        // A key, to make it possible to recognize this HTML element when altering.
-          'inline-css'
-      ];
     }
   }
 }

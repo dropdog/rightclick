@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.field_collection_item.field_high_slides.field_high_slide_img
+    - field.field.field_collection_item.field_high_slides.field_high_slide_mask
+    - field.field.field_collection_item.field_high_slides.field_high_slide_text
+    - field.field.field_collection_item.field_high_slides.field_high_slide_themebg
+    - field.field.field_collection_item.field_high_slides.field_high_slide_title
+    - field_collection.field_collection.field_high_slides
+  module:
+    - responsive_image
+    - text
+id: field_collection_item.field_high_slides.default
+targetEntityType: field_collection_item
+bundle: field_high_slides
+mode: default
+content:
+  field_high_slide_img:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: highlighted
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+  field_high_slide_text:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 400
+    third_party_settings: {  }
+    type: text_trimmed
+  field_high_slide_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  field_high_slide_mask: true
+  field_high_slide_themebg: true

@@ -25,36 +25,20 @@
  * @see template_preprocess_block()
  *
  * @ingroup themeable
+ *
+ * Dropdog modifications
+ * - Remove extra classes
  */
 #}
-{% set classes = [
-'block',
-'block-' ~ configuration.provider|clean_class,
-'block-' ~ plugin_id|clean_class,
-] %}
 
-{#{{ kint(attributes.toArray()['class']) }}#}
-
-{#{{ kint(attributes.hasClass('constrained')) }}#}
-
-
-{% if attributes.hasClass('constrained') %}
-<div{{ attributes.removeClass('constrained').addClass(classes) }}>
-  <div class="constrained">
-    {% else %}
-    <div{{ attributes.addClass(classes) }}>
-      {% endif %}
-      {{ title_prefix }}
-      {% if label %}
-        <h2{{ title_attributes }}>{{ label }}</h2>
-      {% endif %}
-      {{ title_suffix }}
-      {% block content %}
-        {{ content }}
-      {% endblock %}
-      {% if attributes.hasClass('constrained') %}
-    </div>
-  </div>
-  {% else %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 </div>
-{% endif %}
+

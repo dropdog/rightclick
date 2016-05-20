@@ -51,36 +51,36 @@
 .btn.success {
   @extend .btn;
   background-color: $success-color-light;
-  color: $success-color-light;
+  color: $success-color;
   border-color: $success-color-light;
   &:hover {
-    background-color: $success-color-light;
+    background-color: $success-color;
     color: $success-color-light;
-    border-color: $success-color-light;
+    border-color: $success-color;
   }
 }
 
 .btn.warning {
   @extend .btn;
   background-color: $warning-color-light;
-  color: $warning-color-light;
+  color: $warning-color;
   border-color: $warning-color-light;
   &:hover {
     color: $warning-color-light;
-    background-color: $warning-color-light;
-    border-color: $warning-color-light;
+    background-color: $warning-color;
+    border-color: $warning-color;
   }
 }
 
 .btn.danger {
   @extend .btn;
   background-color: $danger-color-light;
-  color: $danger-color-light;
+  color: $danger-color;
   border-color: $danger-color-light;
   &:hover {
     color: $danger-color-light;
-    background-color: $danger-color-light;
-    border-color: $danger-color-light;
+    background-color: $danger-color;
+    border-color: $danger-color;
   }
 }
 
@@ -88,10 +88,11 @@
   @extend .btn;
   background-color: $gray-color-light;
   border: 1px solid $gray-color-light;
-  color: $white;
+  color: $gray-color;
   &:hover {
     background-color: $gray-color-light;
     border: 1px solid $gray-color-light;
-    color: $white;
+    color: $gray-color;
+    cursor: default;
   }
 }

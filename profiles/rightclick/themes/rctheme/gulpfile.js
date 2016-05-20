@@ -32,7 +32,7 @@ var sass_config = {
 
 gulp.task("browser-sync", function() {
     browserSync.init({
-        proxy: "localhost/prototype"
+        proxy: "localhost/fordev"
     });
     gulp.watch("sass/**/*.scss", ["sass"]);
     gulp.watch("css/*.css").on("change", browserSync.reload);
@@ -43,13 +43,13 @@ gulp.task("sass", function () {
   return gulp
     .src("sass/rctheme.scss")
     .pipe(plumber())
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(sassGlob())
     .pipe(sass(sass_config).on("error", sass.logError))
     // .pipe(autoprefixer({
     //   browsers: ["last 2 version"]
     // }))
-    .pipe(sourcemaps.write())
+    //.pipe(sourcemaps.write())
     .pipe(gulp.dest("css"));
 });
 

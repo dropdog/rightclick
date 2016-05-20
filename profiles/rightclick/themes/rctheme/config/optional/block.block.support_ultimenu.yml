@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.support-ultimenu
+  module:
+    - system
+  theme:
+    - rctheme
+id: support_ultimenu
+theme: rctheme
+region: ultimenu_main_c9382c19
+weight: null
+provider: null
+plugin: 'system_menu_block:support-ultimenu'
+settings:
+  id: 'system_menu_block:support-ultimenu'
+  label: Support
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

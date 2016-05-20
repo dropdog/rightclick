@@ -3,63 +3,47 @@ status: true
 dependencies:
   config:
     - block_content.type.rightclick_highlightedblock
-    - field.field.block_content.rightclick_highlightedblock.field_high_bg
+    - field.field.block_content.rightclick_highlightedblock.field_high_bgcolor
     - field.field.block_content.rightclick_highlightedblock.field_high_constrained
-    - field.field.block_content.rightclick_highlightedblock.field_high_img
-    - field.field.block_content.rightclick_highlightedblock.field_high_mask
-    - field.field.block_content.rightclick_highlightedblock.field_high_text
-    - image.style.thumbnail
+    - field.field.block_content.rightclick_highlightedblock.field_high_slides
   module:
-    - image
-    - text
+    - field_collection
+    - workbench_moderation
 id: block_content.rightclick_highlightedblock.default
 targetEntityType: block_content
 bundle: rightclick_highlightedblock
 mode: default
 content:
-  field_high_bg:
-    weight: 10
+  field_high_bgcolor:
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
   field_high_constrained:
-    weight: 9
+    weight: 2
     settings:
       display_label: false
     third_party_settings: {  }
     type: boolean_checkbox
-  field_high_img:
-    weight: 12
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-  field_high_mask:
-    weight: 13
+  field_high_slides:
+    weight: 4
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-  field_high_text:
-    weight: 11
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea_with_summary
+    type: field_collection_embed
   info:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 5
     settings: {  }
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

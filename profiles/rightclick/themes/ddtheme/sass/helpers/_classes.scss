@@ -7,8 +7,8 @@
 }
 
 /**
-  * Classes used for fonts.
-  */
+ * Classes used for fonts.
+ */
 .font-lighter {
   font-weight: lighter;
 }
@@ -22,16 +22,16 @@
 }
 
 /**
-  * Class used in bylines.
-  */
+ * Class used in bylines.
+ */
 .byline {
   @include adjust-font-size-to(0);
   font-style: italic;
 }
 
 /**
-  * Classes used in addresses.
-  */
+ * Classes used in addresses.
+ */
 .vcard {
   @include clearfix;
   p {
@@ -39,24 +39,29 @@
   }
 }
 
-.org {}
-
-.adr {}
-
-.street-address {}
-
-.locality {}
-
-.postal-code {}
-
-/**
-  * Classes used in layout.
-  */
-.constrained {
-  @include container(1200px);
+.org {
 }
 
- .primary-info {
+.adr {
+}
+
+.street-address {
+}
+
+.locality {
+}
+
+.postal-code {
+}
+
+/**
+ * Classes used in layout.
+ */
+.constrained {
+  @include container($desk-big);
+}
+
+.primary-info {
   @include breakpoint($desk) {
     @include grid-span(6, 1);
   }
@@ -69,16 +74,16 @@
 }
 
 /**
-  * Class for leading paragraphs.
-  */
+ * Class for leading paragraphs.
+ */
 .leading {
   @include adjust-font-size-to(2);
   color: $base-color;
 }
 
 /**
-  *Classes for our modular scale in the Styleguide.
-  */
+ * Classes for our modular scale in the Styleguide.
+ */
 .ms10 {
   @include adjust-font-size-to(10);
 }
@@ -148,8 +153,8 @@
 }
 
 /**
-  * Color classes.
-  */
+ * Color classes.
+ */
 .base-color {
   color: $base-color;
 }
@@ -163,13 +168,13 @@
 }
 
 /**
-  * Light color classes.
-  */
+ * Light color classes.
+ */
 .base-color-light {
   color: $base-color-light;
 }
 
-.second-color-light{
+.second-color-light {
   color: $second-color-light;
 }
 
@@ -178,8 +183,8 @@
 }
 
 /**
-  * Background Color classes.
-  */
+ * Background Color classes.
+ */
 .bg-base-color {
   background-color: $base-color;
 }
@@ -193,13 +198,13 @@
 }
 
 /**
-  * Background light color classes.
-  */
+ * Background light color classes.
+ */
 .bg-base-color-light {
   background-color: $base-color-light;
 }
 
-.bg-second-color-light{
+.bg-second-color-light {
   background-color: $second-color-light;
 }
 
@@ -208,8 +213,8 @@
 }
 
 /**
-  * Secondary color classes.
-  */
+ * Secondary color classes.
+ */
 .info-color {
   color: $info-color;
 }
@@ -227,8 +232,8 @@
 }
 
 /**
-  * Light secondary color classes.
-  */
+ * Light secondary color classes.
+ */
 .info-color-light {
   color: $info-color-light;
 }
@@ -246,8 +251,8 @@
 }
 
 /**
-  * Secondary background color classes.
-  */
+ * Secondary background color classes.
+ */
 .bg-info-color {
   background-color: $info-color;
 }
@@ -265,8 +270,8 @@
 }
 
 /**
-  * Secondary light background color classes.
-  */
+ * Secondary light background color classes.
+ */
 .bg-info-color-light {
   background-color: $info-color-light;
 }
@@ -283,10 +288,9 @@
   background-color: $danger-color-light;
 }
 
-
 /**
-  * Background grayscale classes.
-  */
+ * Background grayscale classes.
+ */
 .bg-gray-color {
   background-color: $gray-color;
 }
@@ -308,8 +312,8 @@
 }
 
 /**
-  * Text colors (classes for special cases).
-  */
+ * Text colors (classes for special cases).
+ */
 .text-white {
   color: $white;
 }
@@ -318,10 +322,9 @@
   opacity: 0.5;
 }
 
-
 /**
-  * Text grayscale classes.
-  */
+ * Text grayscale classes.
+ */
 .text-gray {
   color: $gray-color;
 }
@@ -347,20 +350,21 @@
 }
 
 /**
-  * Selected text.
-  */
+ * Selected text.
+ */
 ::selection {
   background: $base-color; /* WebKit/Blink Browsers */
   color: $white;
 }
+
 ::-moz-selection {
   background: $base-color; /* Gecko Browsers */
   color: $white;
 }
 
 /**
-  * Classes for the details tag..
-  */
+ * Classes for the details tag..
+ */
 .details-wrapper {
   background-color: lighten($base-color, 66%);
   padding: $default-atom-space;

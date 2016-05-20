@@ -16,7 +16,7 @@ admin_toolbar_tools.flush_static:
   route_name: admin_toolbar_tools.flush_static
   parent: admin_toolbar_tools.flush
 admin_toolbar_tools.flush_menu:
-  title: Menu
+  title: 'Routing and links'
   route_name: admin_toolbar_tools.flush_menu
   parent: admin_toolbar_tools.flush
 admin_toolbar_tools.drupalorg:

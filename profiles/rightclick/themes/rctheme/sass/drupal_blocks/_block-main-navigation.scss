@@ -1,11 +1,86 @@
 /**
- * Main Navigation.
+ * Main Navigation (ultimenu).
+ *
+ * This file contains all Ultimenu layout and very basic styling.
+ *
+ * Classes:
+ * .ultimenu: the menu UL tag.
+ * .ultimenu > li: the menu LI tag.
+ * .ultimenu__flyout: the ultimenu region container aka flyout.
+ * .ultimenu__link: the menu-link A tag.
+ */
+
+/**
+ * Basic resets.
+ */
+.user-logged-in .button.button--ultimenu {
+  top: 140px;
+}
+
+/*
+ * Mobile Menu button
+ */
+.button.button--ultimenu {
+  border: none;
+  right: $default-atom-space;;
+  top: 100px;
+  background: none;
+  height: 32px;
+  width: 32px;
+  &:after {
+    font-family: Linearicons;
+    content: "\e92b";
+    position: absolute;
+    font-weight: normal;
+    line-height: 1em;
+    top: 0;
+    left: 0;
+    @include adjust-font-size-to(1);
+    display: block;
+    cursor: pointer;
+    margin: 0;
+    padding: 4px;
+    color: $base-color;
+    @include border-radius($default-atom-space/4);
+    border: 1px solid $gray-color-light;
+  }
+  .bars {
+    box-shadow: none;
+    right: 0;
+    top: 0;
+  }
+  &.js-ultimenu-button-active {
+    background: none;
+    border: none;
+    &:after {
+      color: $base-color;
+    }
+  }
+}
+
+.button.button--ultimenu:hover,
+.button.button--ultimenu:active,
+.button.button--ultimenu:focus {
+  outline: none;
+  background: none;
+  border: none;
+}
+
+.button.button--ultimenu:hover {
+  background: $gray-color-light;
+  color: $third-color;
+}
+
+
+/*
+ * Basic Ultimenu style
  */
 
 #block-mainnavigation-ultimenu {
   position: static;
   z-index: 900;
   width: 100%;
+
   > ul#ultimenu-main {
     float: right;
     position: static;
@@ -28,6 +103,7 @@
       }
     }
   }
+
   .ultimenu__link {
   }
 
@@ -192,5 +268,87 @@
     @include breakpoint($tab) {
       @include grid-span(3, 10);
     }
+  }
+}
+
+
+/**
+ * Smaller medium resets.
+ */
+@media all and (max-width: 58.999em) {
+  .ultimenu--main {
+    background: $white;
+    margin-bottom: $default-atom-space*2;
+    @include breakpoint($tab) {
+      margin-bottom: 0;
+    }
+  }
+
+  // The lis.
+  .ultimenu--main .ultimenu__item {
+    // code
+  }
+
+  /* Mobile needs a handler for click event. */
+  .ultimenu--main .ultimenu__link {
+    padding: $default-atom-space/2 $default-atom-space*2;
+    min-height: 10px;
+    color: $base-color;
+    line-height: $base-line-height;
+    border-bottom: 1px solid $gray-color-light;
+  }
+
+  .ultimenu--main .ultimenu__link:hover,
+  .ultimenu--main .ultimenu__link:active {
+    background: $base-color;
+    color: $white;
+  }
+
+  .ultimenu--main .ultimenu__link.is-active {
+    background: $gray-color-light;
+    color: $third-color;
+  }
+
+  .has-ultimenu .caret {
+    @include transition-property(all);
+    @include transition-duration(0.333s);
+    @include transition-timing-function(ease-in);
+    background: none;
+    min-height: 0;
+    width: 32px;
+    height: 32px;
+    right: 0;
+  }
+
+  .has-ultimenu.js-ultimenu-item-expanded .caret {
+    @include transform(rotate(180deg));
+  }
+
+  .has-ultimenu .caret:before {
+    border: none;
+    font-family: Linearicons;
+    content: "\e93a";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    line-height: 1em;
+    margin: 0;
+    padding: $default-atom-space;
+  }
+  .has-ultimenu .js-ultimenu-active .caret:before {
+    border: none;
+  }
+}
+
+/**
+ * Larger medium resets ~ 944px
+ */
+@media all and (min-width: 59em) {
+  .ultimenu--main .ultimenu__link {
+    padding: $default-atom-space*3;
   }
 }

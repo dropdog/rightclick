@@ -146,13 +146,15 @@
     .dropbutton-action {
       a {
         background-color: $gray-color-lighter;
-        color: $white;
+        color: $gray-color;
+        cursor: default;
       }
     }
     .dropbutton-toggle {
       button {
         background-color: $gray-color-lighter;
-        color: $white;
+        color: $gray-color;
+        cursor: default;
       }
     }
     .dropbutton-action.secondary-action {
@@ -160,6 +162,7 @@
         // None needed.
         &:hover {
           // None needed.
+          cursor: default;
         }
       }
     }

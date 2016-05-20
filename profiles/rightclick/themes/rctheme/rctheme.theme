@@ -154,7 +154,7 @@ function rctheme_form_search_block_form_alter(&$form, \Drupal\Core\Form\FormStat
    * Make the submit button of the search form, an image button.
    */
   $form['actions']['submit']['#type'] = 'image_button';
-  $form['actions']['submit']['#src'] = 'profiles/rightclick/themes/rctheme/images/icons/icon-w-search.svg';
+  $form['actions']['submit']['#src'] = 'profiles/dropdog/themes/rctheme/images/icons/icon-w-search.svg';
   $form['actions']['submit']['#alt'] = t('Search');
   /**
    * Add placeholder text the search input field.

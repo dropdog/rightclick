@@ -1,0 +1,18 @@
+owlcarousel.jquery:
+  version: 1.x
+  js:
+    js/owl.carousel.js: {}
+  css:
+    theme:
+      css/owl.carousel.css: {}
+  dependencies:
+    - core/jquery
+
+owlcarousel:
+  version: 0
+  js:
+    js/owlcarousel.settings.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_collection
+    - options
+id: field_collection_item.field_high_slide_themebg
+field_name: field_high_slide_themebg
+entity_type: field_collection_item
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: highthemebg-1
+      label: Backgound_1
+    -
+      value: highthemebg-2
+      label: Backgound_2
+    -
+      value: highthemebg-3
+      label: Backgound_3
+    -
+      value: highthemebg-4
+      label: Backgound_4
+    -
+      value: highthemebg-5
+      label: Backgound_5
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

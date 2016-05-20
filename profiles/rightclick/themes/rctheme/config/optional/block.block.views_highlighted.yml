@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.highlighted
+  module:
+    - views
+  theme:
+    - rctheme
+id: views_highlighted
+theme: rctheme
+region: hero
+weight: null
+provider: null
+plugin: 'views_block:highlighted-block'
+settings:
+  id: 'views_block:highlighted-block'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }

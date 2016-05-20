@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.field_collection_item.field_high_slide_mask
+    - field_collection.field_collection.field_high_slides
+  module:
+    - options
+id: field_collection_item.field_high_slides.field_high_slide_mask
+field_name: field_high_slide_mask
+entity_type: field_collection_item
+bundle: field_high_slides
+label: Mask
+description: 'Apply a color mask over the image slide.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

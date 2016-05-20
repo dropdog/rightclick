@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_high_slides
+    - node.type.basicpage
+  module:
+    - field_collection
+id: node.basicpage.field_high_slides
+field_name: field_high_slides
+entity_type: node
+bundle: basicpage
+label: 'Banner slides'
+description: 'The slides for the "Highlighted" banner.'
+required: false
+translatable: true
+default_value:
+  - {  }
+  - {  }
+default_value_callback: ''
+settings: {  }
+field_type: field_collection

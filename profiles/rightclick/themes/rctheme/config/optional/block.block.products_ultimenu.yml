@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.products-ultimenu
+  module:
+    - system
+  theme:
+    - rctheme
+id: products_ultimenu
+theme: rctheme
+region: ultimenu_main_0fac09d6
+weight: null
+provider: null
+plugin: 'system_menu_block:products-ultimenu'
+settings:
+  id: 'system_menu_block:products-ultimenu'
+  label: Products
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_content
+    - field_collection
     - text
-id: block_content.field_high_text
-field_name: field_high_text
-entity_type: block_content
-type: text_with_summary
+id: field_collection_item.field_high_slide_text
+field_name: field_high_slide_text
+entity_type: field_collection_item
+type: text_long
 settings: {  }
 module: text
 locked: false

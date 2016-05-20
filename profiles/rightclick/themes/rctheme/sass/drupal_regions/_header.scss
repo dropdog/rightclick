@@ -6,7 +6,7 @@
   @include pie-clearfix;
   overflow: visible;
   position: relative;
-
+  z-index: 400;
   /**
    * The regions within the header.
    */

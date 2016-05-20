@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Contains dropdog_view_highlighted.module
+ */
+
+use \Drupal\Core\Entity\Entity;
+
+/*
+ * Implements hook_preprocess_HOOK().
+ */
+function dropdog_view_highlighted_preprocess_block(&$variables) {
+
+  /*
+   * Check for the specific view block.
+   */
+  if (isset($variables['elements']['#configuration']['id'])
+    and $variables['elements']['#configuration']['id'] == 'views_block:highlighted-block'
+  ) {
+
+    /*
+     * Add a common CSS class for highlighted block
+     * same for "block highlighted" and "view block highlighted"
+     */
+    $variables['attributes']['class'][] = 'highlighted-block';
+
+    $entity = $variables['elements']['content']['#view']->result[0]->_entity;
+
+    /*
+     * Check the value of the 'field_high_constrained' field and add an extra wrapper for constrained.
+     */
+    if ($entity->get('field_high_constrained')->getValue()[0]['value'] == 1 ) {
+      $variables['content']['#theme_wrappers']['container']['#attributes']['class'] = array(
+        'constrained',
+      );
+    }
+
+    /*
+     * Add a CSS class for background color
+     */
+    if ($entity->get('field_high_bgcolor')->getValue()[0]['value']) {
+      $variables['attributes']['class'][] = 'bg-' . $entity->get('field_high_bgcolor')
+          ->getValue()[0]['value'];
+    }
+
+  }
+}
+
+
