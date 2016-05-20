@@ -57,7 +57,6 @@ dependencies:
   - address
   - geolocation
   - pathologic
-  - ultimenu
 
   # Rightclick - General
   - rightclick_roles
@@ -66,6 +65,7 @@ dependencies:
   - rightclick_features_bundle
   - rightclick_imagestyles
   - rightclick_menus
+  - rightclick_ctype_basicpage
 
   # Dropdog Block Types
 
