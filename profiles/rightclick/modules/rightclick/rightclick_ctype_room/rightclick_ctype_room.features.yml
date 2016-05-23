@@ -1,0 +1,10 @@
+bundle: rightclick
+excluded:
+  - core.entity_form_display.node.basicpage.default
+  - core.entity_view_display.node.basicpage.default
+  - core.entity_view_display.node.basicpage.full
+  - core.entity_view_display.node.basicpage.teaser
+  - field.field.node.basicpage.field_high_bgcolor
+  - field.field.node.basicpage.field_high_constrained
+  - field.field.node.basicpage.field_high_slides
+required: true

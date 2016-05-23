@@ -1,0 +1,18 @@
+name: 'Rightclick Content Type Gallery'
+description: 'Feature module to create Gallery content type'
+type: module
+core: 8.x
+dependencies:
+  - content_translation
+  - field
+  - file
+  - image
+  - language
+  - menu_ui
+  - node
+  - path
+  - rightclick_imagestyles
+  - text
+  - user
+version: 8.x-1.0
+package: Rightclick

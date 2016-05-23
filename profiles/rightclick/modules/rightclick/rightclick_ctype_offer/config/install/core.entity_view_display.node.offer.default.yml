@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.offer.body
+    - field.field.node.offer.field_offer_valid_from
+    - field.field.node.offer.field_offer_valid_to
+    - node.type.offer
+  module:
+    - datetime
+    - text
+    - user
+id: node.offer.default
+targetEntityType: node
+bundle: offer
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_offer_valid_from:
+    weight: 1
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_offer_valid_to:
+    weight: 2
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  links:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

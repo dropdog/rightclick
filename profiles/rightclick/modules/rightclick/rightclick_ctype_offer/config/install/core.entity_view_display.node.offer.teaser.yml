@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.offer.body
+    - field.field.node.offer.field_offer_valid_from
+    - field.field.node.offer.field_offer_valid_to
+    - node.type.offer
+  module:
+    - text
+    - user
+id: node.offer.teaser
+targetEntityType: node
+bundle: offer
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_offer_valid_from: true
+  field_offer_valid_to: true
+  langcode: true

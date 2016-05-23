@@ -4,7 +4,11 @@ dependencies:
   module:
     - menu_ui
 third_party_settings:
-  menu_ui: null
+  menu_ui:
+    available_menus:
+      - highlighted
+      - main
+    parent: 'main:'
 name: 'Basic Page'
 type: basicpage
 description: 'Use <em>Basic Page</em> for general purpose pages.'

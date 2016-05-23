@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_offer_valid_to
+    - node.type.offer
+  module:
+    - datetime
+id: node.offer.field_offer_valid_to
+field_name: field_offer_valid_to
+entity_type: node
+bundle: offer
+label: to
+description: 'end date of offer.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

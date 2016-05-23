@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_offer_valid_from
+    - node.type.offer
+  module:
+    - datetime
+id: node.offer.field_offer_valid_from
+field_name: field_offer_valid_from
+entity_type: node
+bundle: offer
+label: From
+description: 'Start date of offer.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
