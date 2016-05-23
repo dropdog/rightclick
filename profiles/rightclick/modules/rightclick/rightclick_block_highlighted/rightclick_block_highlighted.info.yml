@@ -4,7 +4,7 @@ type: module
 core: 8.x
 dependencies:
   - block_content
-  - block_highlighted
+  - rightclick_field_collection_highlighted
   - content_translation
   - field
   - field_collection
