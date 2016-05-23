@@ -1,0 +1,13 @@
+name: 'Rightclick Block Highlighted'
+description: 'Feature module to create a block type suitable for the "Hero" region.'
+type: module
+core: 8.x
+dependencies:
+  - block_content
+  - content_translation
+  - field
+  - field_collection
+  - language
+  - options
+  - rightclick_block_highlighted
+version: 8.x-1.2

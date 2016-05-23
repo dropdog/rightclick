@@ -1,8 +1,8 @@
-name: 'RightClick Features Bundle'
+name: 'Rightclick Features Bundle'
 description: 'Features to export default Bundle and settings'
 type: module
 core: 8.x
 dependencies:
   - features
-version: 8.x-1.0
+version: 8.x-1.3
 package: Rightclick

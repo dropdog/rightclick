@@ -4,12 +4,6 @@ dependencies:
   config:
     - field.field.node.basicpage.field_basicpage_body
     - field.field.node.basicpage.field_basicpage_images
-    - field.field.node.basicpage.field_herobg
-    - field.field.node.basicpage.field_heroconstrained
-    - field.field.node.basicpage.field_heroimg
-    - field.field.node.basicpage.field_heromask
-    - field.field.node.basicpage.field_herotext
-    - field.field.node.basicpage.field_herotitle
     - image.style.thumbnail
     - node.type.basicpage
   module:
@@ -33,13 +27,7 @@ third_party_settings:
         classes: ''
         direction: horizontal
     group_banner_hero_zone_:
-      children:
-        - field_herotitle
-        - field_heroconstrained
-        - field_herobg
-        - field_heroimg
-        - field_heromask
-        - field_herotext
+      children: null
       parent_name: group_basic_page
       weight: 24
       label: 'Banner (Hero zone)'

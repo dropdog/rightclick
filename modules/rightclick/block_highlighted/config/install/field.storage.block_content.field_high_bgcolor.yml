@@ -2,23 +2,26 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - block_content
     - options
-id: node.field_heromask
-field_name: field_heromask
-entity_type: node
+id: block_content.field_high_bgcolor
+field_name: field_high_bgcolor
+entity_type: block_content
 type: list_string
 settings:
   allowed_values:
+    -
+      value: lgray
+      label: 'Light Gray'
+    -
+      value: gray
+      label: Gray
     -
       value: blue
       label: Blue
     -
       value: yellow
       label: Yellow
-    -
-      value: black
-      label: Black
   allowed_values_function: ''
 module: options
 locked: false

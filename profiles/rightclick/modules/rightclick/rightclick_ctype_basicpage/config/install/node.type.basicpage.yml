@@ -4,8 +4,7 @@ dependencies:
   module:
     - menu_ui
 third_party_settings:
-  menu_ui:
-    parent: 'careers:'
+  menu_ui: null
 name: 'Basic Page'
 type: basicpage
 description: 'Use <em>Basic Page</em> for general purpose pages.'

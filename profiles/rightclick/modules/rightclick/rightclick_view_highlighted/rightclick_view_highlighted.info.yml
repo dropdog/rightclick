@@ -12,4 +12,4 @@ dependencies:
   - user
   - views
 version: 8.x-1.2
-package: Dropdog
+package: Rightclick

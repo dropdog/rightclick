@@ -12,12 +12,12 @@ use Drupal\Core\Url;
 use Drupal\language\Plugin\Block\LanguageBlock;
 
 /**
- * Provides the 'RightClick Language Switcher' Block
+ * Provides the 'Rightclick Language Switcher' Block
  *
  * @Block(
  *   id = "languageswitcher_block",
- *   admin_label = @Translation("RightClick Language Switcher Block"),
- *   category = @Translation("RightClick"),
+ *   admin_label = @Translation("Rightclick Language Switcher Block"),
+ *   category = @Translation("Rightclick"),
  *   deriver = "Drupal\rightclick_languages\Plugin\Derivative\LanguageSwitcher"
  * )
  */

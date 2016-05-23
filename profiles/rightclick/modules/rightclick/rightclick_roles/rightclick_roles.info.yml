@@ -1,4 +1,4 @@
-name: 'RightClick Roles'
+name: 'Rightclick Roles'
 description: 'Default User Roles. Usually required for other modules.'
 type: module
 core: 8.x

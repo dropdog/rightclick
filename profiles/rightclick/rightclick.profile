@@ -15,7 +15,7 @@ function rightclick_form_install_configure_form_alter(&$form, FormStateInterface
 
   $date = date('d/m/Y h:i:s a');
 
-  $form['site_information']['site_name']['#value'] = t('RightClick') . " " . $date;
+  $form['site_information']['site_name']['#value'] = t('Rightclick') . " " . $date;
   $form['regional_settings']['site_default_country']['#default_value'] = 'GR';
   $form['regional_settings']['date_default_timezone']['#default_value'] = t('Europe/Athens');
   $form['update_notifications']['update_status_module']['2']['#default_value'] = '';

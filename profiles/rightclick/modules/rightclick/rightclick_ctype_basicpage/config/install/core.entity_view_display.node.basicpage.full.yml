@@ -5,12 +5,6 @@ dependencies:
     - core.entity_view_mode.node.full
     - field.field.node.basicpage.field_basicpage_body
     - field.field.node.basicpage.field_basicpage_images
-    - field.field.node.basicpage.field_herobg
-    - field.field.node.basicpage.field_heroconstrained
-    - field.field.node.basicpage.field_heroimg
-    - field.field.node.basicpage.field_heromask
-    - field.field.node.basicpage.field_herotext
-    - field.field.node.basicpage.field_herotitle
     - node.type.basicpage
   module:
     - image

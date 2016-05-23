@@ -8,8 +8,8 @@ id: field_collection_item.field_high_slides.field_high_slide_title
 field_name: field_high_slide_title
 entity_type: field_collection_item
 bundle: field_high_slides
-label: Title
-description: 'The title for the slide.'
+label: 'Banner title'
+description: ''
 required: false
 translatable: false
 default_value: {  }

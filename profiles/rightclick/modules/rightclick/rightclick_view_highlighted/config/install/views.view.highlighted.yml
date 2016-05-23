@@ -5,10 +5,6 @@ dependencies:
     - field.storage.node.field_high_bgcolor
     - field.storage.node.field_high_constrained
     - field.storage.node.field_high_slides
-    - node.type.basicpage
-    - node.type.cabin
-    - node.type.door
-    - node.type.product
   module:
     - field_collection
     - node

@@ -1,4 +1,4 @@
-name: 'RightClick Text Formats'
+name: 'Rightclick Text Formats'
 description: 'The current project text formats. Plain_text and HTML (CKeditor).'
 type: module
 core: 8.x

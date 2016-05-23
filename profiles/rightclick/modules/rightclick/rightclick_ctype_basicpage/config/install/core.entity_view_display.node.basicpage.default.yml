@@ -4,12 +4,6 @@ dependencies:
   config:
     - field.field.node.basicpage.field_basicpage_body
     - field.field.node.basicpage.field_basicpage_images
-    - field.field.node.basicpage.field_herobg
-    - field.field.node.basicpage.field_heroconstrained
-    - field.field.node.basicpage.field_heroimg
-    - field.field.node.basicpage.field_heromask
-    - field.field.node.basicpage.field_herotext
-    - field.field.node.basicpage.field_herotitle
     - image.style.body
     - node.type.basicpage
   module:

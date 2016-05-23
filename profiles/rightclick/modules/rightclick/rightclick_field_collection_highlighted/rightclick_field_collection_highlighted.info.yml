@@ -3,14 +3,14 @@ description: 'Feature module to export a collection field the "Highlighted" bann
 type: module
 core: 8.x
 dependencies:
-  - rightclick_imagestyles
-  - rightclick_ctype_basicpage
   - field
   - field_collection
   - file
   - image
+  - node
   - options
-  - responsive_image
+  - rightclick_ctype_basicpage
   - text
-version: 8.x-1.1
-package: Dropdog
+  - views
+version: 8.x-1.3
+package: Rightclick

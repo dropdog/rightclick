@@ -2,15 +2,12 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.field_herotitle
-field_name: field_herotitle
-entity_type: node
-type: string
-settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+    - block_content
+id: block_content.field_high_constrained
+field_name: field_high_constrained
+entity_type: block_content
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

@@ -1,5 +1,5 @@
-name: 'RightClick Image Styles'
-description: 'Custom image styles for the RightClick profile.'
+name: 'Rightclick Image Styles'
+description: 'Custom image styles for the Rightclick profile.'
 type: module
 core: 8.x
 dependencies:

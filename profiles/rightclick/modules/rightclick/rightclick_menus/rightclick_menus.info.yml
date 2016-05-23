@@ -1,4 +1,4 @@
-name: 'RightClick Menus'
+name: 'Rightclick Menus'
 description: 'Feature module to create Basic Menus (Main navigation, User menu, footer).'
 type: module
 core: 8.x

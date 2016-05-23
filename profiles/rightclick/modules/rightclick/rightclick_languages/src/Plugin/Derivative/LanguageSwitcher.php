@@ -31,7 +31,7 @@ class LanguageSwitcher extends DeriverBase {
       // If there is just one configurable type then change the title of the
       // block.
       if (count($configurable_types) == 1) {
-        $this->derivatives[reset($configurable_types)]['admin_label'] = t('RightClick Language Switcher Block');
+        $this->derivatives[reset($configurable_types)]['admin_label'] = t('Rightclick Language Switcher Block');
       }
     }
 
