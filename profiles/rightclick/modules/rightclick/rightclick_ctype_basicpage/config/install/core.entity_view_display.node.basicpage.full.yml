@@ -5,6 +5,10 @@ dependencies:
     - core.entity_view_mode.node.full
     - field.field.node.basicpage.field_basicpage_body
     - field.field.node.basicpage.field_basicpage_images
+    - field.field.node.basicpage.field_basicpage_second_title
+    - field.field.node.basicpage.field_high_bgcolor
+    - field.field.node.basicpage.field_high_constrained
+    - field.field.node.basicpage.field_high_slides
     - node.type.basicpage
   module:
     - image
@@ -34,6 +38,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_basicpage_second_title: true
   field_domain_access: true
   field_domain_all_affiliates: true
   field_domain_source: true
@@ -43,5 +48,8 @@ hidden:
   field_heromask: true
   field_herotext: true
   field_herotitle: true
+  field_high_bgcolor: true
+  field_high_constrained: true
+  field_high_slides: true
   langcode: true
   links: true

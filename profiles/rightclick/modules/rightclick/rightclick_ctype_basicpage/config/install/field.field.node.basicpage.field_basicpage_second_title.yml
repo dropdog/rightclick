@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_basicpage_second_title
+    - node.type.basicpage
+id: node.basicpage.field_basicpage_second_title
+field_name: field_basicpage_second_title
+entity_type: node
+bundle: basicpage
+label: 'Second title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
