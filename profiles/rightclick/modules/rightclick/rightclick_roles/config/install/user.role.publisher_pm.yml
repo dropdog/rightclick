@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: publisher_pm
-label: 'Publisher (Product Manager)'
-weight: -5
-is_admin: null
-permissions: {  }

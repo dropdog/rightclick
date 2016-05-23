@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: publisher_hr
-label: 'Publisher (H.R.)'
-weight: -6
-is_admin: null
-permissions: {  }

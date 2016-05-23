@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: publisher_marketing
-label: 'Publisher (Marketing)'
-weight: -4
-is_admin: null
-permissions: {  }
