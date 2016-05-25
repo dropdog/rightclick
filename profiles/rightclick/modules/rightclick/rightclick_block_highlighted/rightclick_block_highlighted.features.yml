@@ -1,2 +1,4 @@
 bundle: rightclick
+excluded:
+  - block.block.views_block_highlighted_block
 required: true
