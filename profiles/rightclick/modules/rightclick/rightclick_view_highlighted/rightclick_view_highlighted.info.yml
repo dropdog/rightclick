@@ -3,11 +3,8 @@ description: 'Feature that creates the view that displays the "Hero zone fields"
 type: module
 core: 8.x
 dependencies:
-  - field_collection
-  - node
-  - options
+  - block
   - rightclick_ctype_basicpage
-  - user
   - views
 version: 8.x-1.2
 package: Rightclick
