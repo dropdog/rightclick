@@ -3,10 +3,61 @@ status: true
 dependencies:
   config:
     - field.field.node.room.body
+    - field.field.node.room.field_high_bgcolor
+    - field.field.node.room.field_high_constrained
+    - field.field.node.room.field_high_slides
     - node.type.room
   module:
+    - field_collection
+    - field_group
     - path
     - text
+third_party_settings:
+  field_group:
+    group_room:
+      children:
+        - group_room_information
+        - group_banner_highlighted
+      parent_name: ''
+      weight: 0
+      label: Room
+      format_type: tabs
+      format_settings:
+        label: Room
+        id: ''
+        classes: ''
+        direction: horizontal
+    group_room_information:
+      children:
+        - title
+        - body
+      parent_name: group_room
+      weight: 3
+      label: 'Room Information'
+      format_type: tab
+      format_settings:
+        label: 'Room Information'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_banner_highlighted:
+      children:
+        - field_high_constrained
+        - field_high_bgcolor
+        - field_high_slides
+      parent_name: group_room
+      weight: 4
+      label: 'Banner Highlighted'
+      format_type: tab
+      format_settings:
+        label: 'Banner Highlighted'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 id: node.room.default
 targetEntityType: node
 bundle: room
@@ -14,7 +65,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 31
+    weight: 2
     settings:
       rows: 9
       summary_rows: 3
@@ -22,9 +73,25 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 4
     settings: {  }
     third_party_settings: {  }
+  field_high_bgcolor:
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_high_constrained:
+    weight: 28
+    settings:
+      display_label: false
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_high_slides:
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
   langcode:
     type: language_select
     weight: 2
@@ -32,33 +99,35 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 15
+    weight: 6
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 7
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60

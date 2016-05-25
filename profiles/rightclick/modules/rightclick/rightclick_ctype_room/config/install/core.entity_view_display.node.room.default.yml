@@ -3,6 +3,9 @@ status: true
 dependencies:
   config:
     - field.field.node.room.body
+    - field.field.node.room.field_high_bgcolor
+    - field.field.node.room.field_high_constrained
+    - field.field.node.room.field_high_slides
     - node.type.room
   module:
     - text
@@ -15,10 +18,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 0
     settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 100
 hidden:
+  field_high_bgcolor: true
+  field_high_constrained: true
+  field_high_slides: true
   langcode: true
+  links: true

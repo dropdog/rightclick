@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_high_constrained
+    - node.type.room
+id: node.room.field_high_constrained
+field_name: field_high_constrained
+entity_type: node
+bundle: room
+label: Constrained
+description: 'Make the "Highlighted" banner constrained or content full width.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Constrained
+  off_label: Unconstrained
+field_type: boolean
