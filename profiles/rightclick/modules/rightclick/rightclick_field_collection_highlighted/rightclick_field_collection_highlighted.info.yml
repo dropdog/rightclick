@@ -7,10 +7,9 @@ dependencies:
   - field_collection
   - file
   - image
-  - node
   - options
-  - rightclick_ctype_basicpage
+  - responsive_image
+  - rightclick_imagestyles
   - text
-  - views
 version: 8.x-1.3
 package: Rightclick
