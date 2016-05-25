@@ -45,11 +45,13 @@
 <div class="layout-container">
 
   <header class="header" role="banner">
-    <div class="top-bar">
-      <div class="constrained">
-        {{ page.top }}
+    {% if page.top %}
+      <div class="top-bar">
+        <div class="constrained">
+          {{ page.top }}
+        </div>
       </div>
-    </div>
+    {% endif %}
     <div class="constrained">
       {{ page.header }}
     </div>
@@ -102,8 +104,10 @@
   {% endif %}
 
   {% if page.bottom %}
-    <div class="bottom constrained">
-      {{ page.bottom }}
+    <div class="bottom">
+      <div class="constrained">
+        {{ page.bottom }}
+      </div>
     </div>
   {% endif %}
 

@@ -8,10 +8,8 @@ dependencies:
     - field.field.node.basicpage.field_high_bgcolor
     - field.field.node.basicpage.field_high_constrained
     - field.field.node.basicpage.field_high_slides
-    - image.style.body
     - node.type.basicpage
   module:
-    - image
     - text
     - user
 id: node.basicpage.default
@@ -25,14 +23,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_basicpage_images:
-    weight: 2
-    label: hidden
-    settings:
-      image_style: body
-      image_link: ''
-    third_party_settings: {  }
-    type: image
   field_basicpage_second_title:
     weight: 0
     label: hidden
@@ -41,6 +31,7 @@ content:
     third_party_settings: {  }
     type: string
 hidden:
+  field_basicpage_images: true
   field_domain_access: true
   field_domain_all_affiliates: true
   field_domain_source: true

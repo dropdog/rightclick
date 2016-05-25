@@ -9,21 +9,28 @@ dependencies:
     - field.field.node.basicpage.field_high_bgcolor
     - field.field.node.basicpage.field_high_constrained
     - field.field.node.basicpage.field_high_slides
+    - image.style.hl_desktop
     - node.type.basicpage
   module:
+    - image
     - user
 id: node.basicpage.teaser
 targetEntityType: node
 bundle: basicpage
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_basicpage_images:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: hl_desktop
+      image_link: content
+    third_party_settings: {  }
   workbench_moderation_control:
     weight: -20
 hidden:
   field_basicpage_body: true
-  field_basicpage_images: true
   field_basicpage_second_title: true
   field_domain_access: true
   field_domain_all_affiliates: true
@@ -38,3 +45,4 @@ hidden:
   field_high_constrained: true
   field_high_slides: true
   langcode: true
+  links: true

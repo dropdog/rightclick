@@ -1,2 +1,8 @@
 bundle: rightclick
+excluded:
+  - block.block.views_block_highlighted_block
+  - core.entity_form_display.block_content.rightclick_reference_block.default
+  - core.entity_view_display.block_content.rightclick_reference_block.default
+  - field.field.block_content.rightclick_reference_block.field_blockref_node
+  - views.view.highlighted
 required: true
