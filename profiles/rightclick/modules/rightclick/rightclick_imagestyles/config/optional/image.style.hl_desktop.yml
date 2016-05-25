@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hl_desktop
+label: 'Highlighted Desktop'
+effects:
+  fbcb9bf4-85cd-4a06-9dea-8ed250c98d4f:
+    uuid: fbcb9bf4-85cd-4a06-9dea-8ed250c98d4f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 540

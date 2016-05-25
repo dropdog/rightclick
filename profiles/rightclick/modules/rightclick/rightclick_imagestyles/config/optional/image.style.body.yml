@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: body
+label: Body
+effects:
+  cbf3cd7d-1fef-4271-909c-90c0f7cb7559:
+    uuid: cbf3cd7d-1fef-4271-909c-90c0f7cb7559
+    id: image_scale
+    weight: 2
+    data:
+      width: 300
+      height: 500
+      upscale: false

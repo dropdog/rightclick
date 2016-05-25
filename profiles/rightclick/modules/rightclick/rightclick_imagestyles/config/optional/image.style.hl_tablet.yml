@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: hl_tablet
+label: 'Highlighted Tablet'
+effects:
+  cab4b0ed-2a45-4d2b-b288-41701ca74a2d:
+    uuid: cab4b0ed-2a45-4d2b-b288-41701ca74a2d
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 1024
+      height: 512
