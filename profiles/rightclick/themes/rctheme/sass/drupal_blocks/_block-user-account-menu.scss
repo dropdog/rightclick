@@ -21,6 +21,7 @@
       width: $default-atom-space*4;
       height: $default-atom-space*4;
       /*@include adjust-font-size-to(1);*/
+      color: $base-color;
       &:after {
         text-indent: 0;
         font-family: 'Linearicons-Free';

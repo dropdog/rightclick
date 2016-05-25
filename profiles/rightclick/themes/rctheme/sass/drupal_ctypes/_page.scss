@@ -1,0 +1,5 @@
+.second-title{
+  @include adjust-font-size-to(2);
+  text-transform: uppercase;
+  margin: 0 0 2*$default-atom-space 0;
+}

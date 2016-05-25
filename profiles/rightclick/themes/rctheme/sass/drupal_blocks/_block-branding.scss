@@ -3,6 +3,8 @@
  */
 
 .site-branding {
+  z-index: 100;
+  margin: 1*$default-atom-space 0;
   a{
     display: block;
     line-height: 0;
@@ -10,8 +12,8 @@
   }
   img{
     margin: 0;
-    width: 100%;
-    max-height: 36px;
+    //width: 100%;
+    max-height: 6*$default-atom-space;
   }
   .site-branding__text {
     position: absolute;

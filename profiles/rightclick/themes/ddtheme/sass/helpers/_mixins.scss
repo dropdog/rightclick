@@ -13,7 +13,7 @@
  * Custom mixin for adjusting line height.
  */
 @mixin adjust-font-size-to($font-size) {
-  font-size:ms($font-size);
+  font-size: ms($font-size);
   line-height: map-get($line-height-map, $font-size);
 }
 

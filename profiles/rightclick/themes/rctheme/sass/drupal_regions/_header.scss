@@ -13,7 +13,7 @@
   .top-bar {
     background-color: $gray-color-lighter;
     padding: $default-atom-space 0;
-
+    min-height: 6*$default-atom-space;
     .constrained {
       @include pie-clearfix;
       overflow: visible;
@@ -92,17 +92,14 @@
       @include grid-span(8, 3);
       padding: $default-atom-space*2 0;
       @include breakpoint($tab) {
-        @include grid-span(2, 1);
+        @include grid-span(5, 1);
       }
     }
 
-    #block-mainnavigation-ultimenu {
-      padding: 0;
-      margin-top: 68px;
+    #block-mainnavigation {
       @include grid-span(12, 1);
       @include breakpoint($tab) {
-        margin-top: 0;
-        @include grid-span(10, 3);
+        @include grid-span(7, 6);
       }
     }
   }

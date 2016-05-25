@@ -13,7 +13,7 @@ input[type=radio] {
 /* to hide the checkbox itself */
 input[type=checkbox] + label:before,
 input[type=radio] + label:before {
-  font-family: Linearicons;
+  font-family: 'Linearicons-Free';
   display: inline-block;
   @include adjust-font-size-to (-1);
 
@@ -21,12 +21,22 @@ input[type=radio] + label:before {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  content: "\e98d";
+  content: "\";
+  border: 1px solid $base-color;
+  text-indent: -20000px;
+
+  width: 2*$default-atom-space;
+  height: 2*$default-atom-space;
+  margin-right: $default-atom-space;
   letter-spacing: $default-atom-space;
+
+  line-height: 2*$default-atom-space;
+
+  font-weight: bold;
 }
 
 input[type=radio] + label:before {
-  content: "\e99d";
+  @include border-radius(50%);
 }
 
 /*input[type=checkbox] + label:hover,*/
@@ -39,18 +49,22 @@ input[type=radio] + label:hover:before {
 
 input[type=checkbox]:checked + label:before,
 input[type=radio]:checked + label:before {
-  content: "\e98e";
+  content: "\";
+  text-indent: 0;
   letter-spacing: $default-atom-space;
   color: $base-color;
 }
 
 input[type=radio]:checked + label:before {
-  content: "\e99e";
+  content: "\";
 }
 
 /*input[type=checkbox]:checked + label:hover,*/
 input[type=checkbox]:checked + label:hover:before,
 input[type=radio]:checked + label:hover:before {
+  content: "\";
+  text-indent: 0;
+  letter-spacing: $default-atom-space;
   color: $base-color;
 }
 
