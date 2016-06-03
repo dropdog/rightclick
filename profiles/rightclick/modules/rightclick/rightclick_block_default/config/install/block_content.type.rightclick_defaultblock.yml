@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rightclick_defaultblock
+label: 'Rightclick Default block'
+revision: 1
+description: 'The default block type for the Rightclick profile.'

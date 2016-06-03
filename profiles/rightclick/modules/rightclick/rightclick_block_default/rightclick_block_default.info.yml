@@ -1,0 +1,15 @@
+name: 'Rightclick Block Default'
+description: 'Feature module to create a default block type.'
+type: module
+core: 8.x
+dependencies:
+  - block_content
+  - content_translation
+  - field
+  - file
+  - image
+  - language
+  - rightclick_imagestyles
+  - text
+version: 8.x-1.1
+package: Rightclick

@@ -1,0 +1,4 @@
+bundle: rightclick
+excluded:
+  - field.storage.block_content.field_block_images
+required: true

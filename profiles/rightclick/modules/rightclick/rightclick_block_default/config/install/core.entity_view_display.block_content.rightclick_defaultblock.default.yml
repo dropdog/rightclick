@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.rightclick_defaultblock
+    - field.field.block_content.rightclick_defaultblock.body
+    - field.field.block_content.rightclick_defaultblock.field_block_images
+  module:
+    - image
+    - text
+id: block_content.rightclick_defaultblock.default
+targetEntityType: block_content
+bundle: rightclick_defaultblock
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_block_images:
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  langcode: true
