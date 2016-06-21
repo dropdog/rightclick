@@ -1,0 +1,5 @@
+name: Rightclick Share Links
+type: module
+description: Rightclick Custom Share links Block
+core: 8.x
+package: rightclick

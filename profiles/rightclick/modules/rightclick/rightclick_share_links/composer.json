@@ -1,0 +1,14 @@
+{
+  "name": "drupal/rightclick_share_links",
+  "type": "drupal-module",
+  "description": "Rightclick Custom Share links Block",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/rightclick_share_links",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/rightclick_share_links",
+    "source": "http://cgit.drupalcode.org/rightclick_share_links"
+  },
+  "require": { }
+}

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains rightclick_share_links.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function rightclick_share_links_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the rightclick_share_links module.
+    case 'help.page.rightclick_share_links':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Rightclick Custom Share links Block') . '</p>';
+      return $output;
+
+    default:
+  }
+}
