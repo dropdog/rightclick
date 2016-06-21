@@ -68,6 +68,8 @@ dependencies:
   # - rightclick_languages
   - rightclick_textformats
   - rightclick_features_bundle
+  - rightclick_field_collection_highlighted
+  - rightclick_view_highlighted
   - rightclick_imagestyles
   - rightclick_menus
   - rightclick_ctype_basicpage
