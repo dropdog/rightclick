@@ -12,7 +12,7 @@ cd [my/www/folder]
 git checkout develop
 
 // Install Drupal with Drush or through the UI
-drush site-install dropdog --db-url="mysql://[db_user]:[db_pass]@localhost/[db_name]" --account-name="admin" --account-pass="admin"
+drush site-install rightclick --db-url="mysql://[db_user]:[db_pass]@localhost/[db_name]" --account-name="admin" --account-pass="admin"
 ```
 
 ### Development mode
