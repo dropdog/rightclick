@@ -32,15 +32,18 @@ use Drupal\field_collection\FieldCollectionItemInterface;
  *     "views_data" = "Drupal\views\EntityViewsData",
  *   },
  *   base_table = "field_collection_item",
+ *   data_table = "field_collection_item_field_data",
  *   revision_table = "field_collection_item_revision",
+ *   revision_data_table = "field_collection_item_field_revision",
  *   fieldable = TRUE,
- *   translatable = FALSE,
+ *   translatable = TRUE,
  *   render_cache = FALSE,
  *   entity_keys = {
  *     "id" = "item_id",
  *     "revision" = "revision_id",
  *     "bundle" = "field_name",
  *     "label" = "field_name",
+ *     "langcode" = "langcode",
  *     "uuid" = "uuid"
  *   },
  *   bundle_keys = {
@@ -113,6 +116,10 @@ class FieldCollectionItem extends ContentEntityBase implements FieldCollectionIt
       ->setLabel(t('UUID'))
       ->setDescription(t('The field collection item UUID.'))
       ->setReadOnly(TRUE);
+
+    $fields['langcode'] = BaseFieldDefinition::create('language')
+      ->setLabel(t('Language code'))
+      ->setDescription(t('The field collection item language code.'));
 
     $fields['revision_id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Revision ID'))
@@ -196,6 +203,13 @@ class FieldCollectionItem extends ContentEntityBase implements FieldCollectionIt
    * {@inheritdoc}
    */
   public function delete() {
+    if(!$this->isDefaultTranslation()) {
+      if(!empty($this->get('langcode')->value)) {
+        parent::removeTranslation($this->get('langcode')->value);
+      }
+      return;
+    }
+
     if ($this->getHost()) {
       $this->deleteHostEntityReference();
     }

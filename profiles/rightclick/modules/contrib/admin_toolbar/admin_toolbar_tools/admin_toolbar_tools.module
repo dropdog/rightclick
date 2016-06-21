@@ -35,8 +35,9 @@ function admin_toolbar_tools_help($route_name, RouteMatchInterface $route_match)
   switch ($route_name) {
     case 'help.page.admin_toolbar_tools':
       $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('The Admin Toolbar Extra Tools module allows you to to add more fonctionalities to the default toolbar like flush caches, runnig cron.') . '</p>';
+      $output .= '<p>' . t('The Admin Toolbar Extra Tools module comes packaged with the <a href="https://www.drupal.org/project/admin_toolbar"> Admin Toolbar</a> module and adds functionality to it. The additional functionality is accessed thru extra links on the main administration <a href="https://www.drupal.org/project/toolbar">Toolbar</a>.  Some links to Admin Toolbar Extra Tools administration pages are located at the bottom of this page. For more information, see the <a href="https://www.drupal.org/node/2713693">online documentation for Admin Toolbar</a>') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<p>' . t('To use Admin Toolbar Extra Tools just install it like any other module.  There is no other configuration required. The Admin Toolbar functionality can be further extended by installing complimentary modules.  See <a href="https://www.drupal.org/project/toolbar">Admin Toolbar</a> for a complete listing of these complimentary modules.') . '</p>';
 
       return $output;
   }
@@ -47,6 +48,7 @@ function admin_toolbar_tools_help($route_name, RouteMatchInterface $route_match)
  */
 function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
   $moduleHandler = \Drupal::moduleHandler();
+
   $links['admin_toolbar_tools.help'] = array(
     'title' => t('Tools'),
     'route_name' => '<front>',
@@ -73,11 +75,12 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
     'weight' => -6
   );
   $links['system.modules_uninstall'] = array(
-    'title' => t('Uninstall'),
+    'title' => t('Uninstall module'),
     'route_name' => 'system.modules_uninstall',
     'parent' => 'system.modules_list',
   );
-  // Defining the machine names for all core content entities.
+
+  // Defines the machine names for all core content entities.
   $content_entities = array(
     "block_content" => array(
       "content_entity" => "block_content",
@@ -102,10 +105,10 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
   );
   /**
    * Add  common links to entities if parent module exists.
-   * The common links for entities are :
-   * - Editing entity, Deleting entity,manage fields for entity
+   * The common links for entities are:
+   * - Editing entity, Deleting entity, manage fields for entity
    * manage form display for an entity, entity view display
-   * and others links relating to entity
+   * and others links related to entity.
    */
   foreach ($content_entities as $module_name => $entities) {
     if ($moduleHandler->moduleExists($module_name)) {
@@ -157,9 +160,10 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       }
     }
   }
+
   // Add user links.
   $links['user.admin_create'] = array(
-    'title' => t('Add user'),
+    'title' => t('Add a new user'),
     'route_name' => 'user.admin_create',
     'parent' => 'entity.user.collection',
   );
@@ -173,14 +177,14 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
     'route_name' => 'entity.user_role.collection',
     'parent' => 'entity.user.collection',
   );
-  $links['user.logoutt'] = array(
+  $links['user.logout'] = array(
     'title' => t('Logout'),
     'route_name' => 'user.logout',
     'parent' => 'admin_toolbar_tools.help',
     'weight' => 10,
   );
   $links['user.role_add'] = array(
-    'title' => t('Add role'),
+    'title' => t('Add a new role'),
     'route_name' => 'user.role_add',
     'parent' => 'entity.user_role.collection',
     'weight' => -5,
@@ -260,6 +264,7 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'parent' => 'entity.entity_view_mode.collection',
     );
   }
+
   if ($moduleHandler->moduleExists('taxonomy')) {
     $links['entity.taxonomy_vocabulary.add_form'] = array(
       'title' => t('Add vocabulary'),
@@ -276,6 +281,7 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       );
     }
   }
+
   if ($moduleHandler->moduleExists('menu_ui')) {
     $links['entity.menu.add_form'] = array(
       'title' => t('Add menu'),
@@ -283,7 +289,7 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'parent' => 'entity.menu.collection',
       'weight' => -50
     );
-    // Adding links to /admin/structure/menu.
+    // Adds links to /admin/structure/menu.
     foreach (menu_ui_get_menus() as $machine_name => $label) {
       $links['entity.menu.edit_form.' . $machine_name] = array(
         'title' => $label,
@@ -313,6 +319,7 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       );
     }
   }
+
   // If module block_content is enabled.
   if ($moduleHandler->moduleExists('block_content')) {
     $links['block_content.add_page'] = array(
@@ -332,7 +339,8 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'parent' => 'block.admin_display',
     );
   }
-  // If module contact is enabled.
+
+  // If module Contact is enabled.
   if ($moduleHandler->moduleExists('contact')) {
     $links['contact.form_add'] = array(
       'title' => t('Add contact form'),
@@ -341,7 +349,8 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'weight' => -5
     );
   }
-  // If module Update is enabled.
+
+  // If module Update Manager is enabled.
   if ($moduleHandler->moduleExists('update')) {
     $links['update.module_update'] = array(
       'title' => t('Update'),
@@ -354,65 +363,69 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'parent' => 'system.modules_list',
     );
   }
+
+  // If module Devel is enabled.
   if ($moduleHandler->moduleExists('devel')) {
     $links['admin_development'] = array(
       'title' => t('Development'),
       'route_name' => 'system.admin_config_development',
       'parent' => 'admin_toolbar_tools.help',
-      'weight' => -8
+      'weight' => '-8',
     );
     $links['devel.admin_settings'] = array(
       'title' => t('Devel settings'),
       'route_name' => 'devel.admin_settings',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
+      'weight' => '-1',
     );
     $links['devel.configs_list'] = array(
       'title' => t('Config editor'),
       'route_name' => 'devel.configs_list',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.reinstall'] = array(
       'title' => t('Reinstall modules'),
       'route_name' => 'devel.reinstall',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.menu_rebuild'] = array(
       'title' => t('Rebuild menu'),
       'route_name' => 'devel.menu_rebuild',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.state_system_page'] = array(
       'title' => t('State editor'),
       'route_name' => 'devel.state_system_page',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.theme_registry'] = array(
       'title' => t('Theme registry'),
       'route_name' => 'devel.theme_registry',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.entity_info_page'] = array(
       'title' => t('Entity Info'),
       'route_name' => 'devel.entity_info_page',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.execute_php'] = array(
-      'title' => t('Execute PHP'),
+      'title' => t('Execute PHP Code'),
       'route_name' => 'devel.execute_php',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.session'] = array(
-      'title' => t('View session'),
+      'title' => t('Session viewer'),
       'route_name' => 'devel.session',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
     $links['devel.elements_page'] = array(
-      'title' => t('Hook_elements'),
+      'title' => t('Form API field types'),
       'route_name' => 'devel.elements_page',
-      'parent' => 'admin_development'
+      'parent' => 'admin_development',
     );
   }
-  // If module views_ui enabled.
+
+  // If module Views Ui enabled.
   if ($moduleHandler->moduleExists('views_ui')) {
     $links['views_ui.add'] = array(
       'title' => t('Add new view'),
@@ -421,11 +434,13 @@ function admin_toolbar_tools_menu_links_discovered_alter(&$links) {
       'weight' => -5,
     );
   }
+
   $links['system.theme_settings_'] = array(
     'title' => t('Settings'),
     'route_name' => 'system.theme_settings',
     'parent' => 'system.themes_page',
   );
+
   if ($moduleHandler->moduleExists('update')) {
     $links['update.theme_install_'] = array(
       'title' => t('Install new theme'),

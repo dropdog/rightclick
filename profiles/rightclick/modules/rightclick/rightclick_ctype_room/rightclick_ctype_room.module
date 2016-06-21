@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Contains dropdog_view_highlighted.module
+ */
+
+use \Drupal\Core\Entity\Entity;
+
+/*
+ * Implements hook_preprocess_HOOK().
+ */
+function rightclick_block_offers_preprocess_block(&$variables) {
+
+  /*
+   * Check for the specific view block.
+   */
+//  kint($variables['elements']['#configuration']['id']);
+  if (isset($variables['elements']['#configuration']['id'])
+    and $variables['elements']['#configuration']['id'] == 'views_block:offers-block_1'
+  ) {
+    //$variables['attributes']['class'][] = 'high-slides-owl';
+    $variables['#attached']['library'][] = 'rightclick_field_collection_highlighted/owlcarousel.jquery';
+    $variables['#attached']['library'][] = 'rightclick_block_offers/offers_owlcarousel';
+  }
+}
+
+

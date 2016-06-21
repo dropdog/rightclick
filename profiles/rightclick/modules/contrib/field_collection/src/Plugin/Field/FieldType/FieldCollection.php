@@ -85,10 +85,20 @@ class FieldCollection extends FieldItemBase {
     }
     elseif (isset($this->value)) {
       // By default always load the default revision, so caches get used.
+
       $field_collection_item = FieldCollectionItem::load($this->value);
-      if ($field_collection_item !== NULL && $field_collection_item->getRevisionId() != $this->revision_id) {
-        // A non-default revision is a referenced, so load this one.
-        $field_collection_item = \Drupal::entityTypeManager()->getStorage('field_collection_item')->loadRevision($this->revision_id);
+      if ($field_collection_item !== NULL) {
+        if($field_collection_item->getRevisionId() != $this->revision_id) {
+          // A non-default revision is a referenced, so load this one.
+          $field_collection_item = \Drupal::entityTypeManager()->getStorage('field_collection_item')->loadRevision($this->revision_id);
+        }
+        $langcode = $this->getLangcode();
+        if($langcode != $field_collection_item->language()->getId()) {
+          if(!$field_collection_item->hasTranslation($langcode)) {
+              $field_collection_item->addTranslation($langcode, $field_collection_item->getFields(TRUE));
+          }
+          return $field_collection_item->getTranslation($langcode);
+        }
       }
       return $field_collection_item;
     }

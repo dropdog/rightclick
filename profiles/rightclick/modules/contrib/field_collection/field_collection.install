@@ -1,0 +1,295 @@
+<?php
+
+use Drupal\Core\Database\Connection;
+
+/**
+ * Update existing field collection entities in order to be translatable
+ */
+function field_collection_update_8101() {
+  $db = \Drupal::database();
+  __fc_tables_create($db);
+  __fc_columns_update($db);
+}
+
+function __fc_assign_children(&$fciItem, &$fciArray) {
+  /**
+   * Recursive check for field collection in field collection
+   */
+
+  if (empty($fciItem['children'])) {
+    return;
+  }
+  foreach ($fciItem['children'] as $id => &$value) {
+    if (empty($fciArray[$id])) {
+      continue;
+    }
+    __fc_assign_children($fciArray[$id], $fciArray);
+    if (empty($value)) {
+      $value = $fciArray[$id];
+    } else {
+      $value = array_merge($value, $fciArray[$id]);
+    }
+    unset($fciArray[$id]);
+  }
+}
+
+function __fc_get_tree(Connection $db) {
+  /**
+   * SET main field collection info table
+   */
+
+  $sourceTable = 'field_collection_item_field_data';
+  if (!$db->schema()->tableExists($sourceTable)) {
+    return [];
+  }
+
+  /**
+   * GET field collection tree
+   */
+
+  $fciArray = [];
+  $tableArray = $db->schema()->findTables('field_collection_item__%');
+  $tablePartFci = 'field_collection_item__';
+
+  foreach ($tableArray as $tableItem) {
+    if(strpos($tableItem, $tablePartFci) !== 0) {
+      continue;
+    }
+    $q = "SELECT * FROM {$tableItem} tbl LEFT JOIN {$sourceTable} AS fci ON tbl.entity_id = fci.item_id";
+    $itemArray = $db->query($q)->fetchAll();
+    if(empty($itemArray)) {
+      continue;
+    }
+    $fieldName = substr($tableItem, strlen($tablePartFci));
+    $fValue = $fieldName.'_value';
+    $fRevisionId = $fieldName.'_revision_id';
+    foreach ($itemArray as $item) {
+      $fciArray[$item->entity_id]['tables'][] = $tableItem;
+      $fciArray[$item->entity_id]['host_type'] = $item->host_type;
+      if (!empty($item->$fRevisionId) && !empty($item->$fValue)) {
+        $fciArray[$item->entity_id]['children'][$item->$fValue]['parent'] = ['table' => $tableItem, 'column' => $fValue];
+      }
+    }
+  }
+
+  foreach ($fciArray as &$fciItem) {
+    __fc_assign_children($fciItem, $fciArray);
+  }
+
+  if(empty($fciArray)) {
+    return [];
+  }
+
+  /**
+   * END GET field collection tree
+   *
+   * GET node and field collection tree
+   */
+
+  $fcTables = $db->select($sourceTable, 'fci')
+    ->distinct(TRUE)
+    ->fields('fci', ['field_name'])
+    ->condition('host_type', 'node')
+    ->execute()->fetchAll();
+  $itemArray = [];
+  foreach ($fcTables as $fc) {
+    $table = "node__{$fc->field_name}";
+    $column = "{$fc->field_name}_value";
+    if (!$db->schema()->tableExists($table) || !$db->schema()->fieldExists($table, $column)) {
+      continue;
+    }
+    $nodeItems = $db->select($table, 'tbl')
+      ->fields('tbl', ['entity_id', 'langcode', $column])
+      ->execute()->fetchAll();
+    foreach ($nodeItems as $node) {
+      if (empty($fciArray[$node->$column])) {
+        continue;
+      }
+      $itemArray[$node->entity_id][$node->langcode][$node->$column] = $fciArray[$node->$column];
+      unset($fciArray[$node->$column]);
+    }
+  }
+
+  ksort($itemArray);
+  ksort($fciArray);
+
+  /**
+   * END GET node and field collection tree
+   *
+   * Clear unused field collections
+   */
+
+  __fc_clear_empty($db, $fciArray);
+
+  return $itemArray;
+}
+
+function __fc_tables_create(Connection $db) {
+  /**
+   * CHANGE existing field collection (FC) items to translatable
+   */
+
+  $manager = \Drupal::entityDefinitionUpdateManager();
+  $entity_type = $manager->getEntityType('field_collection_item');
+  $prefix = 'fci__';
+
+  /**
+   * FC entity type settings change
+   */
+
+  $entity_type->set('translatable', TRUE);
+  $entity_type->set('data_table', 'field_collection_item_field_data');
+  $entity_type->set('revision_data_table', 'field_collection_item_field_revision');
+  $entity_keys = $entity_type->getKeys();
+  $entity_keys['langcode'] = 'langcode';
+  $entity_type->set('entity_keys', $entity_keys);
+
+  /**
+   * Temporary copy of existing FC items data
+   */
+
+  $q = "RENAME TABLE field_collection_item TO {$prefix}field_collection_item";
+  $db->query($q);
+  $q = "RENAME TABLE field_collection_item_revision TO {$prefix}field_collection_item_revision";
+  $db->query($q);
+
+  /**
+   * Installing updated entity type
+   */
+
+  $manager->installEntityType($entity_type);
+
+  /**
+   * Inserting back data
+   */
+
+  $q = "INSERT INTO field_collection_item (item_id, revision_id, field_name, uuid, langcode) SELECT item_id, revision_id, field_name, uuid, '' AS langcode FROM {$prefix}field_collection_item";
+  $db->query($q);
+  $q = "INSERT INTO field_collection_item_field_data (item_id, revision_id, field_name, langcode, host_type, default_langcode) SELECT item_id, revision_id, field_name, '' AS langcode, host_type, 1 AS default_langcode FROM {$prefix}field_collection_item";
+  $db->query($q);
+  $q = "INSERT INTO field_collection_item_revision (item_id, revision_id, langcode) SELECT item_id, revision_id, '' AS langcode FROM {$prefix}field_collection_item_revision";
+  $db->query($q);
+  $q = "INSERT INTO field_collection_item_field_revision (item_id, revision_id, langcode, default_langcode) SELECT item_id, revision_id, '' AS langcode, 1 AS default_langcode FROM {$prefix}field_collection_item_revision";
+  $db->query($q);
+
+  /**
+   * Dropping temporary tables
+   */
+
+  $q = "DROP TABLE {$prefix}field_collection_item";
+  $db->query($q);
+  $q = "DROP TABLE {$prefix}field_collection_item_revision";
+  $db->query($q);
+}
+
+function __fc_update_items($db, $items, $langCode) {
+  /**
+   * Recursive update of FC items langode
+   */
+
+  if (empty($items)) {
+    return;
+  }
+  foreach ($items as $fcId => $item) {
+    $q = "UPDATE field_collection_item AS fci SET fci.langcode = '{$langCode}' WHERE fci.item_id = '{$fcId}'";
+    $db->query($q);
+    $q = "UPDATE field_collection_item_field_data AS fci SET fci.langcode = '{$langCode}' WHERE fci.item_id = '{$fcId}'";
+    $db->query($q);
+    $q = "UPDATE field_collection_item_revision AS fci SET fci.langcode = '{$langCode}' WHERE fci.item_id = '{$fcId}'";
+    $db->query($q);
+    $q = "UPDATE field_collection_item_field_revision AS fci SET fci.langcode = '{$langCode}' WHERE fci.item_id = '{$fcId}'";
+    $db->query($q);
+    if (!empty($item['tables'])) {
+      foreach ($item['tables'] as $table) {
+        $q = "UPDATE {$table} AS fci SET fci.langcode = '{$langCode}' WHERE fci.entity_id = '{$fcId}'";
+        $db->query($q);
+      }
+    }
+    if (empty($item['children'])) {
+      continue;
+    }
+    __fc_update_items($db, $item['children'], $langCode);
+  }
+}
+
+function __fc_columns_update(Connection $db) {
+  /**
+   * UPDATE of FC items langode
+   */
+
+  $tree = __fc_get_tree($db);
+  if(empty($tree)) {
+    return;
+  }
+  foreach ($tree as $language) {
+    if (empty($language)) {
+      continue;
+    }
+    foreach ($language as $langCode => $items) {
+      __fc_update_items($db, $items, $langCode);
+    }
+  }
+}
+
+function __fc_get_children($fciItem) {
+  /**
+   * GET all children, sub children etc. FC items ids
+   */
+
+  if(empty($fciItem['children'])) {
+    return [];
+  }
+  $children = array_keys($fciItem['children']);
+  foreach ($fciItem['children'] as $item) {
+    $children = array_merge($children, __fc_get_children($item));
+  }
+  return $children;
+}
+
+function __fc_clear_empty(Connection $db, $fciArray) {
+  /**
+   * CLEAR unused field collections (if any in DB)
+   */
+
+  if(empty($fciArray)) {
+    return;
+  }
+  $emptyIds = array_keys($fciArray);
+  foreach ($fciArray as $fciItem) {
+    $emptyIds = array_merge($emptyIds, __fc_get_children($fciItem));
+  }
+  $emptyIds = implode(', ', $emptyIds);
+
+  $q = "DELETE FROM field_collection_item WHERE item_id IN ({$emptyIds})";
+  $db->query($q);
+
+  $q = "DELETE FROM field_collection_item_field_data WHERE item_id IN ({$emptyIds})";
+  $db->query($q);
+
+  $q = "DELETE FROM field_collection_item_revision WHERE item_id IN ({$emptyIds})";
+  $db->query($q);
+
+  $q = "DELETE FROM field_collection_item_field_revision WHERE item_id IN ({$emptyIds})";
+  $db->query($q);
+
+  $tableArray = $db->schema()->findTables('field_collection_item__field%');
+  if(!empty($tableArray)) {
+    return;
+  }
+  foreach ($tableArray as $tableItem) {
+    $q = "DELETE FROM {$tableItem} WHERE entity_id IN ({$emptyIds})";
+    $db->query($q);
+  }
+  foreach ($fciArray as $fciItem) {
+    if(empty($fciItem['children'])) {
+      continue;
+    }
+    foreach ($fciItem['children'] as $id => $value) {
+      if (empty($value['parent']['table']) || empty($value['parent']['table']) || !$db->schema()->tableExists($value['parent']['table']) || !$db->schema()->fieldExists($value['parent']['table'], $value['parent']['column'])) {
+        continue;
+      }
+      $q = "DELETE FROM {$value['table']} WHERE {$value['parent']['column']} = '{$id}'";
+      $db->query($q);
+    }
+  }
+}

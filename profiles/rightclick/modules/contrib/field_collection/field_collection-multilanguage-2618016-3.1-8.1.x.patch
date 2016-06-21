@@ -1,0 +1,77 @@
+diff --git a/src/Entity/FieldCollectionItem.php b/src/Entity/FieldCollectionItem.php
+index 498f650..14cd6cc 100644
+--- a/src/Entity/FieldCollectionItem.php
++++ b/src/Entity/FieldCollectionItem.php
+@@ -32,15 +32,18 @@ use Drupal\field_collection\FieldCollectionItemInterface;
+  *     "views_data" = "Drupal\views\EntityViewsData",
+  *   },
+  *   base_table = "field_collection_item",
++ *   data_table = "field_collection_item_field_data",
+  *   revision_table = "field_collection_item_revision",
++ *   revision_data_table = "field_collection_item_field_revision",
+  *   fieldable = TRUE,
+- *   translatable = FALSE,
++ *   translatable = TRUE,
+  *   render_cache = FALSE,
+  *   entity_keys = {
+  *     "id" = "item_id",
+  *     "revision" = "revision_id",
+  *     "bundle" = "field_name",
+  *     "label" = "field_name",
++ *     "langcode" = "langcode",
+  *     "uuid" = "uuid"
+  *   },
+  *   bundle_keys = {
+@@ -114,6 +117,10 @@ class FieldCollectionItem extends ContentEntityBase implements FieldCollectionIt
+       ->setDescription(t('The field collection item UUID.'))
+       ->setReadOnly(TRUE);
+ 
++    $fields['langcode'] = BaseFieldDefinition::create('language')
++      ->setLabel(t('Language code'))
++      ->setDescription(t('The field collection item language code.'));
++
+     $fields['revision_id'] = BaseFieldDefinition::create('integer')
+       ->setLabel(t('Revision ID'))
+       ->setDescription(t('The field collection item revision ID.'))
+@@ -196,6 +203,13 @@ class FieldCollectionItem extends ContentEntityBase implements FieldCollectionIt
+    * {@inheritdoc}
+    */
+   public function delete() {
++    if(!$this->isDefaultTranslation()) {
++      if(!empty($this->get('langcode')->value)) {
++        parent::removeTranslation($this->get('langcode')->value);
++      }
++      return;
++    }
++
+     if ($this->getHost()) {
+       $this->deleteHostEntityReference();
+     }
+diff --git a/src/Plugin/Field/FieldType/FieldCollection.php b/src/Plugin/Field/FieldType/FieldCollection.php
+index 2194dc2..2961476 100644
+--- a/src/Plugin/Field/FieldType/FieldCollection.php
++++ b/src/Plugin/Field/FieldType/FieldCollection.php
+@@ -85,10 +85,20 @@ class FieldCollection extends FieldItemBase {
+     }
+     elseif (isset($this->value)) {
+       // By default always load the default revision, so caches get used.
++
+       $field_collection_item = FieldCollectionItem::load($this->value);
+-      if ($field_collection_item !== NULL && $field_collection_item->getRevisionId() != $this->revision_id) {
+-        // A non-default revision is a referenced, so load this one.
+-        $field_collection_item = \Drupal::entityTypeManager()->getStorage('field_collection_item')->loadRevision($this->revision_id);
++      if ($field_collection_item !== NULL) {
++        if($field_collection_item->getRevisionId() != $this->revision_id) {
++          // A non-default revision is a referenced, so load this one.
++          $field_collection_item = \Drupal::entityTypeManager()->getStorage('field_collection_item')->loadRevision($this->revision_id);
++        }
++        $langcode = $this->getLangcode();
++        if($langcode != $field_collection_item->language()->getId()) {
++          if(!$field_collection_item->hasTranslation($langcode)) {
++              $field_collection_item->addTranslation($langcode, $field_collection_item->getFields(TRUE));
++          }
++          return $field_collection_item->getTranslation($langcode);
++        }
+       }
+       return $field_collection_item;
+     }
