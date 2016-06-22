@@ -7,7 +7,7 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Offers
+name: Offer
 type: offer
 description: 'Use <em>offer</em> to post offer.'
 help: ''

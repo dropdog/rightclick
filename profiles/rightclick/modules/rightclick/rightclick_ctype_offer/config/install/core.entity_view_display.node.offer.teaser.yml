@@ -4,6 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.offer.body
+    - field.field.node.offer.field_high_bgcolor
+    - field.field.node.offer.field_high_constrained
+    - field.field.node.offer.field_high_slides
+    - field.field.node.offer.field_offer_bookurl
     - field.field.node.offer.field_offer_valid_from
     - field.field.node.offer.field_offer_valid_to
     - node.type.offer
@@ -25,6 +29,10 @@ content:
   links:
     weight: 100
 hidden:
+  field_high_bgcolor: true
+  field_high_constrained: true
+  field_high_slides: true
+  field_offer_bookurl: true
   field_offer_valid_from: true
   field_offer_valid_to: true
   langcode: true

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_offer_bookurl
+    - node.type.offer
+  module:
+    - link
+id: node.offer.field_offer_bookurl
+field_name: field_offer_bookurl
+entity_type: node
+bundle: offer
+label: 'Booking URL'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/contact/offer_request'
+    title: 'SUBMIT REQUEST'
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

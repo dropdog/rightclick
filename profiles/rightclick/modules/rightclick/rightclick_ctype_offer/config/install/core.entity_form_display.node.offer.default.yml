@@ -3,13 +3,69 @@ status: true
 dependencies:
   config:
     - field.field.node.offer.body
+    - field.field.node.offer.field_high_bgcolor
+    - field.field.node.offer.field_high_constrained
+    - field.field.node.offer.field_high_slides
+    - field.field.node.offer.field_offer_bookurl
     - field.field.node.offer.field_offer_valid_from
     - field.field.node.offer.field_offer_valid_to
     - node.type.offer
   module:
     - datetime
+    - field_collection
+    - field_group
+    - link
     - path
     - text
+third_party_settings:
+  field_group:
+    group_quote:
+      children:
+        - group_quote_information
+        - group_banner_highlighted
+      parent_name: ''
+      weight: 0
+      label: Quote
+      format_type: tabs
+      format_settings:
+        label: Quote
+        id: ''
+        classes: ''
+        direction: horizontal
+    group_quote_information:
+      children:
+        - title
+        - field_offer_valid_from
+        - field_offer_valid_to
+        - body
+        - field_offer_bookurl
+      parent_name: group_quote
+      weight: 12
+      label: 'Quote Information'
+      format_type: tab
+      format_settings:
+        label: 'Quote Information'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_banner_highlighted:
+      children:
+        - field_high_constrained
+        - field_high_bgcolor
+        - field_high_slides
+      parent_name: group_quote
+      weight: 15
+      label: 'Banner Highlighted'
+      format_type: tab
+      format_settings:
+        label: 'Banner Highlighted'
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 id: node.offer.default
 targetEntityType: node
 bundle: offer
@@ -25,9 +81,32 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
+  field_high_bgcolor:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_high_constrained:
+    weight: 14
+    settings:
+      display_label: false
+    third_party_settings: {  }
+    type: boolean_checkbox
+  field_high_slides:
+    weight: 16
+    settings: {  }
+    third_party_settings: {  }
+    type: field_collection_embed
+  field_offer_bookurl:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
   field_offer_valid_from:
     weight: 2
     settings: {  }
@@ -40,40 +119,40 @@ content:
     type: datetime_default
   langcode:
     type: language_select
-    weight: 1
+    weight: -100
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 10
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 7
+    weight: -95
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60

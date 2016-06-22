@@ -1,2 +1,7 @@
 bundle: rightclick
+excluded:
+  - block.block.offers_block
+  - block.block.offers_block_list
+  - block.block.views_highlighted_block
+  - views.view.offers
 required: true
