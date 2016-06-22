@@ -1,8 +1,7 @@
 (function ($) {
   Drupal.behaviors.Quotes = {
     attach: function (context, settings) {
-
-      $('#block-quotes-block > div.views-rows').owlCarousel({
+      $('#block-quotes-block-rows').owlCarousel({
         loop: true,
         margin: 0,
         nav: true,
