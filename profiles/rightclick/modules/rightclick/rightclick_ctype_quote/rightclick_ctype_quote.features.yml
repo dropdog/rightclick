@@ -1,2 +1,5 @@
 bundle: rightclick
+excluded:
+  - block.block.quotes_block
+  - views.view.quotes
 required: true

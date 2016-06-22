@@ -3,6 +3,8 @@ status: true
 dependencies:
   config:
     - field.field.node.quote.body
+    - field.field.node.quote.field_quote_location
+    - field.field.node.quote.field_quote_name
     - node.type.quote
   module:
     - text
@@ -15,10 +17,23 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 0
     settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 100
+  field_quote_location:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_quote_name:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
 hidden:
   langcode: true
+  links: true

@@ -1,8 +1,10 @@
-name: 'Rightclick Content Type Quotes'
+name: 'Rightclick Content Type Quote'
 description: 'Feature module to create Gallery content type'
 type: module
 core: 8.x
 dependencies:
+  - block
+  - content_translation
   - field
   - language
   - menu_ui
@@ -10,5 +12,6 @@ dependencies:
   - path
   - text
   - user
-version: 8.x-1.0
+  - views
+version: 8.x-1.1
 package: Rightclick

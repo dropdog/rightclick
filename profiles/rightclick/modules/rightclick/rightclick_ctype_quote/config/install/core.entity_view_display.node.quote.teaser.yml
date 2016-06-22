@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.quote.body
+    - field.field.node.quote.field_quote_location
+    - field.field.node.quote.field_quote_name
     - node.type.quote
   module:
     - text
@@ -23,4 +25,6 @@ content:
   links:
     weight: 100
 hidden:
+  field_quote_location: true
+  field_quote_name: true
   langcode: true
