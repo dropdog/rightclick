@@ -6,8 +6,13 @@ dependencies:
     - field.field.node.room.field_high_bgcolor
     - field.field.node.room.field_high_constrained
     - field.field.node.room.field_high_slides
+    - field.field.node.room.field_room_bookurl
+    - field.field.node.room.field_room_photos
+    - image.style.hl_desktop
     - node.type.room
   module:
+    - image
+    - link
     - text
     - user
 id: node.room.default
@@ -21,6 +26,25 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+  field_room_bookurl:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_room_photos:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: hl_desktop
+      image_link: ''
+    third_party_settings: {  }
+    type: image
 hidden:
   field_high_bgcolor: true
   field_high_constrained: true

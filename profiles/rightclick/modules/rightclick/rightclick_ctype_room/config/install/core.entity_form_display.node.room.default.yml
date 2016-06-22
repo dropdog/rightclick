@@ -6,10 +6,15 @@ dependencies:
     - field.field.node.room.field_high_bgcolor
     - field.field.node.room.field_high_constrained
     - field.field.node.room.field_high_slides
+    - field.field.node.room.field_room_bookurl
+    - field.field.node.room.field_room_photos
+    - image.style.thumbnail
     - node.type.room
   module:
     - field_collection
     - field_group
+    - image
+    - link
     - path
     - text
 third_party_settings:
@@ -31,6 +36,7 @@ third_party_settings:
       children:
         - title
         - body
+        - field_room_bookurl
       parent_name: group_room
       weight: 3
       label: 'Room Information'
@@ -92,6 +98,20 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: field_collection_embed
+  field_room_bookurl:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: 'BOOK NOW'
+    third_party_settings: {  }
+    type: link_default
+  field_room_photos:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
   langcode:
     type: language_select
     weight: 2

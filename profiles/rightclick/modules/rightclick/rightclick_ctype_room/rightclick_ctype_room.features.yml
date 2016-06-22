@@ -1,14 +1,19 @@
 bundle: rightclick
 excluded:
   - core.entity_form_display.node.basicpage.default
-  - core.entity_form_display.block_content.rightclick_reference_block.default
   - core.entity_view_display.node.basicpage.default
   - core.entity_view_display.node.basicpage.full
   - core.entity_view_display.node.basicpage.teaser
-  - core.entity_view_display.block_content.rightclick_reference_block.default
   - field.field.node.basicpage.field_high_bgcolor
   - field.field.node.basicpage.field_high_constrained
   - field.field.node.basicpage.field_high_slides
-  - field.field.block_content.rightclick_reference_block.field_blockref_node
-  - block.block.views_block_highlighted_block
+  - field.field.node.simplenews_issue.field_news_photos
+  - block.block.news_blocklinks
+  - block.block.news_block_list
+  - block.block.rooms_block
+  - block.block.views_highlighted_block
+  - field.storage.node.field_news_photos
+  - image.style.medium_wide
+  - views.view.news
+  - views.view.rooms
 required: true

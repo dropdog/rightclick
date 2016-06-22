@@ -1,0 +1,8 @@
+room_owlcarousel:
+  version: 0
+  js:
+    js/room_owlcarousel.settings.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

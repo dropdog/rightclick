@@ -1,21 +1,23 @@
-name: 'Rightclick Content Type Rooms'
-description: 'Feature module to create Rooms content type'
+name: 'Rightclick Content Type Room'
+description: 'Feature module to create Room content type'
 type: module
 core: 8.x
 dependencies:
-  - block
   - content_translation
   - field
   - field_collection
   - field_group
+  - file
+  - image
   - language
+  - link
   - menu_ui
   - node
   - options
   - path
   - rightclick_ctype_basicpage
+  - rightclick_imagestyles
   - text
   - user
-  - views
-version: 8.x-1.1
+version: 8.x-1.2
 package: Rightclick

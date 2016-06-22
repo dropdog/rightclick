@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_room_bookurl
+    - node.type.room
+  module:
+    - link
+id: node.room.field_room_bookurl
+field_name: field_room_bookurl
+entity_type: node
+bundle: room
+label: 'Booking URL'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    attributes: {  }
+    uri: 'https://hotelmelissanthi.book-onlinenow.net/'
+    title: 'BOOK NOW'
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link
