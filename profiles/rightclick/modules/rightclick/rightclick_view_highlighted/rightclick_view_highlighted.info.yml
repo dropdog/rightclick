@@ -4,7 +4,12 @@ type: module
 core: 8.x
 dependencies:
   - block
+  - field_collection
+  - node
+  - options
   - rightclick_ctype_basicpage
+  - rightclick_ctype_offer
+  - user
   - views
 version: 8.x-1.2
 package: Rightclick
