@@ -167,7 +167,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: -100
     settings: {  }
     third_party_settings: {  }
   path:

@@ -16,6 +16,7 @@ dependencies:
   - options
   - path
   - rightclick_imagestyles
+  - system
   - text
   - user
   - views
