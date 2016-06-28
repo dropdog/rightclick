@@ -7,7 +7,7 @@ How does it work
 ================
 
 Enable default content first.
-Any module that requires default content can put hal+json versions of the entities inside content/lang/{entity_type} folders.
+Any module that requires default content can put hal+json versions of the entities inside content/{entity_type} folders.
 
 For example see default_content_test which has
 

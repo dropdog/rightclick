@@ -1,5 +1,5 @@
 {
-  "name": "drupal/defaultcontent",
+  "name": "drupal/default_content",
   "description": "Imports default content when a module is enabled",
   "type": "drupal-module",
   "license": "GPL-2.0+",

@@ -1,11 +1,6 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\defaultcontent\DefaultContentScanner.
- */
-
-namespace Drupal\defaultcontent;
+namespace Drupal\default_content;
 
 /**
  * A scanner to find YAML files in a given folder.
@@ -21,7 +16,7 @@ class DefaultContentScanner {
    * @return array
    *   List of stdClass objects with name and uri properties.
    */
-  public function scan($directory, $ext = 'json') {
+  public function scan($directory) {
     // Use Unix paths regardless of platform, skip dot directories, follow
     // symlinks (to allow extensions to be linked from elsewhere), and return
     // the RecursiveDirectoryIterator instance to have access to getSubPath(),
@@ -37,7 +32,7 @@ class DefaultContentScanner {
       /* @var \SplFileInfo $fileinfo */
 
       // Skip directories and non-json files.
-      if ($fileinfo->isDir() || $fileinfo->getExtension() != $ext) {
+      if ($fileinfo->isDir() || $fileinfo->getExtension() != 'json') {
         continue;
       }
 
