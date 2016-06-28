@@ -8,6 +8,7 @@
 namespace Drupal\flippy;
 
 use Drupal\Core\Entity\EntityFieldManager;
+use Drupal\Core\Language;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -42,11 +43,15 @@ class FlippyPager {
     }
     if (!isset($master_list[$node->id()])) {
       // Check to see if we need custom sorting
-      if (\Drupal::config('flippy.settings')->get('flippy_custom_sorting_' . $node->getType())) {
+      if (\Drupal::config('flippy.settings')
+        ->get('flippy_custom_sorting_' . $node->getType())
+      ) {
         // Get order
-        $order = \Drupal::config('flippy.settings')->get('flippy_order_' . $node->getType());
+        $order = \Drupal::config('flippy.settings')
+          ->get('flippy_order_' . $node->getType());
         // Get sort
-        $sort = \Drupal::config('flippy.settings')->get('flippy_sort_' . $node->getType());
+        $sort = \Drupal::config('flippy.settings')
+          ->get('flippy_sort_' . $node->getType());
       }
       else {
         $order = 'ASC';
@@ -77,7 +82,7 @@ class FlippyPager {
         $current_field_items = $node->{$sort}->getValue();
         if (!isset($current_field_items[0]['value'])) {
           // should never happen, but just in case, fall back to post date ascending
-          $sort  = 'created';
+          $sort = 'created';
           $order = 'ASC';
         }
         else {
@@ -87,14 +92,17 @@ class FlippyPager {
       }
       // Depending on order, decide what before and after means
       $before = ($order == 'ASC') ? '<' : '>';
-      $after  = ($order == 'ASC') ? '>' : '<';
+      $after = ($order == 'ASC') ? '>' : '<';
       // Also decide what up and down means
-      $up   = ($order == 'ASC') ? 'ASC' : 'DESC';
+      $up = ($order == 'ASC') ? 'ASC' : 'DESC';
       $down = ($order == 'ASC') ? 'DESC' : 'ASC';
       // Create a starting-point SelectQuery object
       // todo: convert the SelectQuery into EntityQuery when D8 EntityQuery start
       // todo: to support nested conditions.
       //$language = new Language();
+      // Rightclick Language Fix START
+      $language = \Drupal::languageManager()->getCurrentLanguage();
+      // Rightclick Language Fix END
       $connection = \Drupal::database();
       $query = $connection->select('node_field_data', 'nfd');
       $query->fields('nfd', array('nid'))
@@ -103,13 +111,16 @@ class FlippyPager {
         ->condition('nfd.nid', $node->id(), '!=')
         //todo: add language condition.
         //->condition('langcode', array($language::LANGCODE_DEFAULT, $language::LANGCODE_NOT_SPECIFIED), 'IN')
+        // Rightclick Language Fix START
+        ->condition('langcode', array($language->getId()), 'IN')
+        // Rightclick Language Fix END
         ->range(0, 1)
         ->addTag('node_access');
       // Create the individual queries
-      $first  = clone $query;
-      $prev   = clone $query;
-      $next   = clone $query;
-      $last   = clone $query;
+      $first = clone $query;
+      $prev = clone $query;
+      $next = clone $query;
+      $last = clone $query;
       $random = clone $query;
       // We will construct the queries differently depending on whether the sorting
       // criteria is a field or a base table property.
@@ -120,51 +131,51 @@ class FlippyPager {
         // first and last query
         $first->leftJoin('node__' . $sort, $sort, 'nfd.nid = ' . $sort . '.entity_id');
         $first->condition(db_or()
-            ->condition($sort . '.' . $sort . '_value', $field_value, $before)
-            ->condition(db_and()
-                ->condition('nfd.nid', $node->id(), $before)
-                ->condition(db_or()
-                    ->condition($sort . '.' . $sort . '_value', $field_value, '=')
-                    ->isnull($sort . '.' . $sort . '_value')
-                )
+          ->condition($sort . '.' . $sort . '_value', $field_value, $before)
+          ->condition(db_and()
+            ->condition('nfd.nid', $node->id(), $before)
+            ->condition(db_or()
+              ->condition($sort . '.' . $sort . '_value', $field_value, '=')
+              ->isnull($sort . '.' . $sort . '_value')
             )
+          )
         );
 
         $last->leftJoin('node__' . $sort, $sort, 'nfd.nid = ' . $sort . '.entity_id');
         $last->condition(db_or()
-            ->condition($sort . '.' . $sort . '_value', $field_value, $after)
-            ->condition(db_and()
-                ->condition('nfd.nid', $node->id(), $after)
-                ->condition(db_or()
-                    ->condition($sort . '.' . $sort . '_value', $field_value, '=')
-                    ->isnull($sort . '.' . $sort . '_value')
-                )
+          ->condition($sort . '.' . $sort . '_value', $field_value, $after)
+          ->condition(db_and()
+            ->condition('nfd.nid', $node->id(), $after)
+            ->condition(db_or()
+              ->condition($sort . '.' . $sort . '_value', $field_value, '=')
+              ->isnull($sort . '.' . $sort . '_value')
             )
+          )
         );
 
         // previous query to find out the previous item based on the field, using
         // node id if the other criteria is the same.
         $prev->leftJoin('node__' . $sort, $sort, 'nfd.nid = ' . $sort . '.entity_id');
         $prev->condition(db_or()
-            ->condition($sort . '.' . $sort . '_value', $field_value, $before)
-            ->condition(db_and()
-                ->condition('nfd.nid', $node->id(), $before)
-                ->condition(db_or()
-                    ->condition($sort . '.' . $sort . '_value', $field_value, '=')
-                    ->isnull($sort . '.' . $sort . '_value')
-                )
+          ->condition($sort . '.' . $sort . '_value', $field_value, $before)
+          ->condition(db_and()
+            ->condition('nfd.nid', $node->id(), $before)
+            ->condition(db_or()
+              ->condition($sort . '.' . $sort . '_value', $field_value, '=')
+              ->isnull($sort . '.' . $sort . '_value')
             )
+          )
         );
         $next->leftJoin('node__' . $sort, $sort, 'nfd.nid = ' . $sort . '.entity_id');
         $next->condition(db_or()
-            ->condition($sort . '.' . $sort . '_value', $field_value, $after)
-            ->condition(db_and()
-                ->condition('nfd.nid', $node->id(), $after)
-                ->condition(db_or()
-                    ->condition($sort . '.' . $sort . '_value', $field_value, '=')
-                    ->isnull($sort . '.' . $sort . '_value')
-                )
+          ->condition($sort . '.' . $sort . '_value', $field_value, $after)
+          ->condition(db_and()
+            ->condition('nfd.nid', $node->id(), $after)
+            ->condition(db_or()
+              ->condition($sort . '.' . $sort . '_value', $field_value, '=')
+              ->isnull($sort . '.' . $sort . '_value')
             )
+          )
         );
 
         // set the ordering
@@ -186,22 +197,22 @@ class FlippyPager {
         // previous query to find out the previous item based on the field, using
         // node id if the other criteria is the same.
         $prev->condition(db_or()
-            ->condition($sort, $sort_value[0]['value'], $before)
-            ->condition('nid', 7, '<')
-            ->condition(db_and()
-                ->condition($sort, $sort_value[0]['value'], '=')
-                ->condition('nfd.nid', $node->id(), $before)
-            )
+          ->condition($sort, $sort_value[0]['value'], $before)
+          ->condition('nid', 7, '<')
+          ->condition(db_and()
+            ->condition($sort, $sort_value[0]['value'], '=')
+            ->condition('nfd.nid', $node->id(), $before)
+          )
         );
 
         // next query to find out the next item based on the field, using
         // node id if the other criteria is the same.
         $next->condition(db_or()
-            ->condition($sort, $sort_value[0]['value'], $after)
-            ->condition(db_and()
-                ->condition($sort, $sort_value[0]['value'], '=')
-                ->condition('nfd.nid', $node->id(), $after)
-            )
+          ->condition($sort, $sort_value[0]['value'], $after)
+          ->condition(db_and()
+            ->condition($sort, $sort_value[0]['value'], '=')
+            ->condition('nfd.nid', $node->id(), $after)
+          )
         );
 
         // set the ordering
@@ -232,9 +243,9 @@ class FlippyPager {
       // Execute the queries
       $results = array();
       $results['first'] = $queries['first']->execute()->fetchField();
-      $results['prev']  = $queries['prev']->execute()->fetchField();
-      $results['next']  = $queries['next']->execute()->fetchField();
-      $results['last']  = $queries['last']->execute()->fetchField();
+      $results['prev'] = $queries['prev']->execute()->fetchField();
+      $results['next'] = $queries['next']->execute()->fetchField();
+      $results['last'] = $queries['last']->execute()->fetchField();
 
       $node_ids = array();
       foreach ($results as $key => $result) {
@@ -265,7 +276,9 @@ class FlippyPager {
         }
       }
       // create random list
-      if (\Drupal::config('flippy.settings')->get('flippy_random_' . $node->getType())) {
+      if (\Drupal::config('flippy.settings')
+        ->get('flippy_random_' . $node->getType())
+      ) {
         $random->orderRandom();
         $random_nid = $random->execute()->fetchField();
 
@@ -292,4 +305,5 @@ class FlippyPager {
     return $master_list[$node->id()];
   }
 }
+
 ?>
