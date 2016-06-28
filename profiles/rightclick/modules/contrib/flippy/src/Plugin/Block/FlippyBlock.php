@@ -6,10 +6,8 @@
 
 namespace Drupal\flippy\Plugin\Block;
 
-use Drupal\block\BlockBase;
-use Drupal\Component\Annotation\Plugin;
-use Drupal\Core\Annotation\Translation;
-use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Url;
 
 /**
  * Provides a "Flippy" block.
@@ -27,23 +25,42 @@ class FlippyBlock extends BlockBase {
   public function build() {
     $build = array();
     // Detect if we're viewing a node
-    if ($node = menu_get_object('node')) {
+    if ($node = \Drupal::request()->attributes->get('node')) {
       // Make sure this node type is still enabled
       if (_flippy_use_pager($node)) {
+        $children = [
+          '#theme'    => 'flippy',
+          '#list'     => \Drupal::service('flippy.pager')->flippy_build_list($node),
+          '#attached' => array(
+            'library' => array(
+              'flippy/drupal.flippy',
+            ),
+          ),
+        ];
         // Generate the block
-        $build['#children'] = theme('flippy', array('list' => flippy_build_list($node)));
+        $build['#children'] = render($children);
+
         // Set head elements
-        _flippy_add_head_elements($node);
+        if (is_object($node)) {
+          if (\Drupal::config('flippy.settings')->get('flippy_head_' . $node->getType())) {
+            $links = \Drupal::service('flippy.pager')->flippy_build_list($node);
+            if ($links['prev']['nid'] != FALSE) {
+              $build['#attached']['html_head_link'][][] = array(
+                'rel' => 'prev',
+                'href' => Url::fromRoute('entity.node.canonical', array('node' => $links['prev']['nid']))->toString(),
+              );
+            }
+            if ($links['next']['nid'] != FALSE) {
+              $build['#attached']['html_head_link'][][] = array(
+                'rel' => 'next',
+                'href' => Url::fromRoute('entity.node.canonical', array('node' => $links['next']['nid']))->toString(),
+              );
+            }
+          }
+        }
       }
     }
 
     return $build;
-  }
-
-  /**
-   * Implements \Drupal\block\BlockBase::access().
-   */
-  public function access(AccountInterface $account) {
-    return $account->hasPermission('access content');
   }
 }
