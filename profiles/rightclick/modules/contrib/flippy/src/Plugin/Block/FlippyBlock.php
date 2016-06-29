@@ -36,6 +36,11 @@ class FlippyBlock extends BlockBase {
               'flippy/drupal.flippy',
             ),
           ),
+          // Rightclick Fix Cache START
+          '#cache' => array(
+            'contexts' => array('url.path'),
+          ),
+          // Rightclick Fix Cache END
         ];
         // Generate the block
         $build['#children'] = render($children);
